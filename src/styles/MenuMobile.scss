@@ -1,0 +1,49 @@
+@use "vars";
+
+.MenuMobile {
+  padding: 24px;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  width: 95%;
+  left: 0;
+  // top: 15px;
+}
+
+.MenuMobile figure {
+  margin: 0;
+  width: 90%;
+  display: flex;
+  justify-content: end;
+}
+
+.MenuMobile figure img {
+  width: 15px;
+  cursor: pointer;
+}
+
+.MenuMobile a {
+  text-decoration: none;
+  color: var(--black);
+  font-weight: bold;
+  /* margin-bottom: 24px; */
+}
+.MenuMobile ul {
+  padding: 0;
+  margin: 24px 0 0;
+  list-style: none;
+}
+.MenuMobile ul:nth-child(1) {
+  border-bottom: 1px solid var(--very-light-pink);
+}
+.MenuMobile ul li {
+  margin-bottom: 24px;
+}
+.MenuMobile ul li .email {
+  font-size: var(--sm);
+  font-weight: 300;
+}
+.MenuMobile ul li .sign-out {
+  font-size: var(--sm);
+  color: var(--hospital-green);
+}

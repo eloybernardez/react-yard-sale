@@ -13,7 +13,11 @@ nav {
 .menu {
   display: none;
 }
+.menu__logo {
+  background: transparent;
+}
 .nav-logo {
+  padding-top: 1.2rem;
   width: 100px;
 }
 .navbar-left ul,
@@ -28,6 +32,18 @@ nav {
 .navbar-left {
   display: flex;
 }
+.nav-button {
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  font-family: "Quicksand", sans-serif;
+  font-size: 0.95rem;
+}
+.nav-button:hover {
+  border: 2px solid var(--hospital-green);
+  border-radius: 5px;
+}
+
 .navbar-left ul {
   margin-left: 12px;
 }

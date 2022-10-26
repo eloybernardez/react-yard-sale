@@ -7,6 +7,7 @@ import menu from "../assets/icons/icon_menu.svg";
 import logo from "../assets/logos/logo_yard_sale.svg";
 import shoppingCart from "../assets/icons/icon_shopping_cart.svg";
 import "../styles/Header.scss";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -26,29 +27,55 @@ const Header = () => {
     <nav>
       <img src={menu} alt="menu" className="menu" onClick={handleMobile} />
       <div className="navbar-left">
-        <img src={logo} alt="logo" className="nav-logo" />
+        <Link className="menu__logo" to="/">
+          <img src={logo} alt="logo" className="nav-logo" />
+        </Link>
+
         <ul>
           <li>
-            <button onClick={() => updateProducts("")}>All</button>
+            <button className="nav-button" onClick={() => updateProducts("")}>
+              All
+            </button>
           </li>
           <li>
-            <button onClick={() => updateProducts("Clothes")}>Clothes</button>
+            <button
+              className="nav-button"
+              onClick={() => updateProducts("Clothes")}
+            >
+              Clothes
+            </button>
           </li>
           <li>
-            <button onClick={() => updateProducts("Electronics")}>
+            <button
+              className="nav-button"
+              onClick={() => updateProducts("Electronics")}
+            >
               Electronics
             </button>
           </li>
           <li>
-            <button onClick={() => updateProducts("Furniture")}>
+            <button
+              className="nav-button"
+              onClick={() => updateProducts("Furniture")}
+            >
               Furnitures
             </button>
           </li>
           <li>
-            <button onClick={() => updateProducts("Toys")}>Toys</button>
+            <button
+              className="nav-button"
+              onClick={() => updateProducts("Toys")}
+            >
+              Toys
+            </button>
           </li>
           <li>
-            <button onClick={() => updateProducts("Others")}>Others</button>
+            <button
+              className="nav-button"
+              onClick={() => updateProducts("Others")}
+            >
+              Others
+            </button>
           </li>
         </ul>
       </div>

@@ -27,7 +27,7 @@ const Login = () => {
           <input
             type="text"
             name="email"
-            placeholder="platzi@example.cm"
+            placeholder="janedoe@example.com"
             className="input input-email"
           />
           <label htmlFor="password" className="label">
@@ -46,7 +46,7 @@ const Login = () => {
           >
             Log in
           </button>
-          <a href="/">Forgot my password</a>
+          <a href="/password-recovery">Forgot my password</a>
         </form>
         <button className="secondary-button signup-button">Sign up</button>
       </div>

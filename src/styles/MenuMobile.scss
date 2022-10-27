@@ -22,22 +22,43 @@
   cursor: pointer;
 }
 
-.MenuMobile a {
+.MenuMobile button {
   text-decoration: none;
   color: var(--black);
   font-weight: bold;
   /* margin-bottom: 24px; */
 }
+
+.MenuMobile button:focus {
+  color: var(--hospital-green);
+}
+
+.MenuMobile .title {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: var(--black);
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.MenuMobile .sign-out {
+  color: var(--hospital-green);
+  font-weight: bold;
+  margin-bottom: 24px;
+  text-decoration: none;
+}
+
 .MenuMobile ul {
   padding: 0;
   margin: 24px 0 0;
   list-style: none;
+  border-bottom: 1px solid var(--very-light-pink);
 }
 .MenuMobile ul:nth-child(1) {
   border-bottom: 1px solid var(--very-light-pink);
 }
 .MenuMobile ul li {
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 .MenuMobile ul li .email {
   font-size: var(--sm);

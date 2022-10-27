@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import close from "../assets/icons/icon_close.png";
 import AppContext from "../context/AppContext";
 import "../styles/MenuMobile.scss";
 
 const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
-  const { state } = useContext(AppContext);
+  const { updateProducts } = useContext(AppContext);
   return (
     <div className="MenuMobile">
       <figure>
@@ -17,45 +18,68 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
 
       <ul>
         <li>
-          <a href="/">CATEGORIES</a>
+          <button className="nav-button" onClick={() => updateProducts("")}>
+            All
+          </button>
         </li>
         <li>
-          <a href="/">All</a>
+          <button
+            className="nav-button"
+            onClick={() => updateProducts("Clothes")}
+          >
+            Clothes
+          </button>
         </li>
         <li>
-          <a href="/">Clothes</a>
+          <button
+            className="nav-button"
+            onClick={() => updateProducts("Electronics")}
+          >
+            Electronics
+          </button>
         </li>
         <li>
-          <a href="/">Electronics</a>
+          <button
+            className="nav-button"
+            onClick={() => updateProducts("Furniture")}
+          >
+            Furnitures
+          </button>
         </li>
         <li>
-          <a href="/">Furnitures</a>
+          <button className="nav-button" onClick={() => updateProducts("Toys")}>
+            Toys
+          </button>
         </li>
         <li>
-          <a href="/">Toys</a>
-        </li>
-        <li>
-          <a href="/">Other</a>
+          <button
+            className="nav-button"
+            onClick={() => updateProducts("Others")}
+          >
+            Others
+          </button>
         </li>
       </ul>
       <ul>
         <li>
-          <a href="/">My orders</a>
+          <Link className="title" to="/orders">
+            My orders
+          </Link>
         </li>
         <li>
-          <a href="/">My account</a>
+          <Link className="title" to="/account">
+            My account
+          </Link>
         </li>
       </ul>
       <ul>
         <li>
-          <a href="/" className="email">
-            platzi@example.com
-          </a>
+          <p className="email">eloy@example.com</p>
         </li>
         <li>
-          <a href="/" className="sign-out">
+          <Link className="sign-out" to="/login">
             Sign out
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

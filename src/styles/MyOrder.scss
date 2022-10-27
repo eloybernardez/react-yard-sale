@@ -16,10 +16,12 @@
 .title-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .title-container img {
   transform: rotate(180deg);
   margin-right: 14px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 .title {

@@ -4,7 +4,7 @@ import AppContext from "../context/AppContext";
 
 import "../styles/MyOrder.scss";
 
-import flechita from "../assets/icons/flechita.svg";
+import flechita from "../assets/icons/icon_close.png";
 
 const MyOrder = ({ toggleOrders, setToggleOrders }) => {
   const { state } = useContext(AppContext);
@@ -19,12 +19,12 @@ const MyOrder = ({ toggleOrders, setToggleOrders }) => {
   return (
     <aside className="MyOrder">
       <div className="title-container">
+        <p className="title">My order</p>
         <img
           src={flechita}
           alt="arrow"
           onClick={() => setToggleOrders(!toggleOrders)}
         />
-        <p className="title">My order</p>
       </div>
       <div className="my-order-content">
         {state.cart.map((product, index) => {

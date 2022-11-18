@@ -4,10 +4,9 @@ import OrderItem from "../components/OrderItem";
 import "../styles/Checkout.scss";
 
 const Checkout = () => {
-  const { state } = useContext(AppContext);
+  const { state, sumTotal } = useContext(AppContext);
   const date = new Date().toLocaleDateString("en-US");
 
-  // console.log(state.cart);
   return (
     <div className="Checkout">
       <div className="Checkout-container">
@@ -18,7 +17,7 @@ const Checkout = () => {
               <span>{date}</span>
               <span>{state.cart.length} articles</span>
             </p>
-            <p>$560.00</p>
+            <p>${sumTotal()}</p>
             <div className="order-items">
               {state.cart.length > 0 ? (
                 state.cart.map((product, index) => {

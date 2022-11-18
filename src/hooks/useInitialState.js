@@ -45,7 +45,6 @@ const useInitialState = () => {
       ...state,
       products: filterProducts.length ? filterProducts : [...newProducts],
     });
-    console.log(state);
   };
 
   return {

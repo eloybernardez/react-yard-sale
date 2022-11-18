@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import OrderItem from "../components/OrderItem";
+import { Link } from "react-router-dom";
 import AppContext from "../context/AppContext";
 
 import "../styles/MyOrder.scss";
 
-import flechita from "../assets/icons/icon_close.png";
+import close from "../assets/icons/icon_close.png";
 
 const MyOrder = ({ toggleOrders, setToggleOrders }) => {
   const { state } = useContext(AppContext);
@@ -21,14 +22,20 @@ const MyOrder = ({ toggleOrders, setToggleOrders }) => {
       <div className="title-container">
         <p className="title">My order</p>
         <img
-          src={flechita}
-          alt="arrow"
+          src={close}
+          alt="close icon"
           onClick={() => setToggleOrders(!toggleOrders)}
         />
       </div>
       <div className="my-order-content">
         {state.cart.map((product, index) => {
-          return <OrderItem indexValue={index} key={index} product={product} />; // el indexValue es para que cuando eliminemos un producto no se eliminen los repetidos. el index es para dar keys UNICAS a cada producto
+          return (
+            <OrderItem
+              indexValue={index}
+              key={`product-n${index}`}
+              product={product}
+            />
+          ); // el indexValue es para que cuando eliminemos un producto no se eliminen los repetidos. el index es para dar keys UNICAS a cada producto
         })}
         <div className="order">
           <p>
@@ -36,7 +43,11 @@ const MyOrder = ({ toggleOrders, setToggleOrders }) => {
           </p>
           <p>${sumTotal()}</p>
         </div>
-        <button className="primary-button">Checkout</button>
+        <button className="primary-button">
+          <Link className="button-text" to="/checkout">
+            Checkout
+          </Link>
+        </button>
       </div>
     </aside>
   );

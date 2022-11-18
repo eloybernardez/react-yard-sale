@@ -30,6 +30,7 @@ const App = () => {
               element={<PasswordRecovery />}
             />
             <Route exact path="/send-email" element={<SendEmail />} />
+
             <Route exact path="/new-password" element={<NewPassword />} />
             <Route exact path="/account" element={<MyAccount />} />
             <Route exact path="/signup" element={<CreateAccount />} />

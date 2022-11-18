@@ -28,6 +28,11 @@
   font-size: var(--lg);
   font-weight: bold;
 }
+
+.button-text {
+  text-decoration: none;
+  color: var(--text-input-field);
+}
 .order {
   display: grid;
   grid-template-columns: auto 1fr;

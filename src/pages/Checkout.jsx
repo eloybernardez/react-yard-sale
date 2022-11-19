@@ -17,7 +17,7 @@ const Checkout = () => {
               <span>{date}</span>
               <span>{state.cart.length} articles</span>
             </p>
-            <p>${sumTotal()}</p>
+            <p className="order-price">${sumTotal()}</p>
             <div className="order-items">
               {state.cart.length > 0 ? (
                 state.cart.map((product, index) => {

@@ -51,7 +51,7 @@
   font-size: var(--md);
   font-weight: bold;
 }
-.order p:nth-child(2) {
+.order p:nth-child(2).order-price {
   text-align: end;
   font-weight: bold;
 }

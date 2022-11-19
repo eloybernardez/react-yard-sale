@@ -34,7 +34,7 @@ const MyOrder = ({ toggleOrders, setToggleOrders }) => {
           <p>
             <span>Total</span>
           </p>
-          <p>${sumTotal()}</p>
+          <p className="order-price">${sumTotal()}</p>
         </div>
         <button className="primary-button">
           <Link className="button-text" to="/checkout">

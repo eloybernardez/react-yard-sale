@@ -46,6 +46,11 @@
 .input-email {
   margin-bottom: 22px;
 }
+
+.input.input--error {
+  border: 1px solid red;
+}
+
 .primary-button {
   background-color: var(--hospital-green);
   border-radius: 8px;

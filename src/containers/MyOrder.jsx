@@ -8,7 +8,7 @@ import "../styles/MyOrder.scss";
 import close from "../assets/icons/icon_close.png";
 
 const MyOrder = ({ toggleOrders, setToggleOrders }) => {
-  const { state, sumTotal } = useContext(AppContext);
+  const { state, sumTotal, currentUser } = useContext(AppContext);
 
   return (
     <aside className="MyOrder">
@@ -36,10 +36,22 @@ const MyOrder = ({ toggleOrders, setToggleOrders }) => {
           </p>
           <p className="order-price">${sumTotal()}</p>
         </div>
-        <button className="primary-button">
-          <Link className="button-text" to="/checkout">
-            Checkout
-          </Link>
+        <button
+          className="primary-button"
+          onClick={() => {
+            setToggleOrders(false);
+            setToggle(false);
+          }}
+        >
+          {currentUser ? (
+            <Link className="button-text" to="/checkout">
+              Checkout
+            </Link>
+          ) : (
+            <Link className="button-text" to="/login">
+              Log in to buy
+            </Link>
+          )}
         </button>
       </div>
     </aside>

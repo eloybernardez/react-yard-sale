@@ -37,7 +37,7 @@ const useGetUsers = () => {
       (user) => user.email === email && user.pass === pass
     );
 
-    return findedUser;
+    return findedUser || false;
   };
 
   const handleItems = (user, item) => {

@@ -6,7 +6,8 @@ import logo from "../assets/logos/logo_yard_sale.svg";
 
 const Login = () => {
   const form = useRef(null);
-  const { findUser, currentUser, setCurrentUser } = useContext(AppContext);
+  const [error, setError] = useState(false);
+  const { findUser, setCurrentUser } = useContext(AppContext);
 
   const handleSubmit = () => {
     const formData = new FormData(form.current); // para enviar la informacion del formulario al hacer submit
@@ -15,11 +16,12 @@ const Login = () => {
       password: Number(formData.get("password")),
     };
 
+    setError(false);
     // Check if user is registered
     const correctUser = findUser(data.username, data.password);
 
     // Log user
-    !correctUser ? setCurrentUser(null) : setCurrentUser(correctUser);
+    !correctUser ? setError(true) : setCurrentUser(correctUser);
   };
 
   return (
@@ -34,7 +36,7 @@ const Login = () => {
             type="text"
             name="email"
             placeholder="janedoe@example.com"
-            className="input input-email"
+            className={`input input-email ${error ? `input--error` : null}`}
           />
           <label htmlFor="password" className="label">
             Password
@@ -43,7 +45,7 @@ const Login = () => {
             type="password"
             name="password"
             placeholder="*********"
-            className="input input-password"
+            className={`input input-password ${error ? `input--error` : null}`}
           />
           <button
             type="button"

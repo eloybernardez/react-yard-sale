@@ -27,20 +27,38 @@ const Header = () => {
     <nav>
       <img src={menu} alt="menu" className="menu" onClick={handleMobile} />
       <div className="navbar-left">
-        <Link className="menu__logo" to="/">
+        <Link
+          className="menu__logo"
+          to="/"
+          onClick={() => {
+            setToggleOrders(false);
+            setToggle(false);
+          }}
+        >
           <img src={logo} alt="logo" className="nav-logo" />
         </Link>
 
         <ul>
           <li>
-            <button className="nav-button" onClick={() => updateProducts("")}>
+            <button
+              className="nav-button"
+              onClick={() => {
+                setToggleOrders(false);
+                setToggle(false);
+                updateProducts("");
+              }}
+            >
               All
             </button>
           </li>
           <li>
             <button
               className="nav-button"
-              onClick={() => updateProducts("Clothes")}
+              onClick={() => {
+                setToggleOrders(false);
+                setToggle(false);
+                updateProducts("Clothes");
+              }}
             >
               Clothes
             </button>
@@ -48,7 +66,11 @@ const Header = () => {
           <li>
             <button
               className="nav-button"
-              onClick={() => updateProducts("Electronics")}
+              onClick={() => {
+                setToggleOrders(false);
+                setToggle(false);
+                updateProducts("Electronics");
+              }}
             >
               Electronics
             </button>
@@ -56,7 +78,11 @@ const Header = () => {
           <li>
             <button
               className="nav-button"
-              onClick={() => updateProducts("Furniture")}
+              onClick={() => {
+                setToggleOrders(false);
+                setToggle(false);
+                updateProducts("Furniture");
+              }}
             >
               Furnitures
             </button>
@@ -64,7 +90,11 @@ const Header = () => {
           <li>
             <button
               className="nav-button"
-              onClick={() => updateProducts("Toys")}
+              onClick={() => {
+                setToggleOrders(false);
+                setToggle(false);
+                updateProducts("Toys");
+              }}
             >
               Toys
             </button>
@@ -72,7 +102,11 @@ const Header = () => {
           <li>
             <button
               className="nav-button"
-              onClick={() => updateProducts("Others")}
+              onClick={() => {
+                setToggleOrders(false);
+                setToggle(false);
+                updateProducts("Others");
+              }}
             >
               Others
             </button>
@@ -88,7 +122,7 @@ const Header = () => {
               setToggleOrders(false);
             }}
           >
-            {currentUser ? currentUser.email : "Log in"}
+            {currentUser ? currentUser.email : <Link to="/login">Login</Link>}
           </li>
           <li
             className="navbar-shopping-cart"
@@ -102,7 +136,9 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      {toggle ? <Menu /> : null}
+      {toggle && currentUser ? (
+        <Menu setToggle={setToggle} setToggleOrders={setToggleOrders} />
+      ) : null}
 
       {toggleOrders ? (
         <MyOrder

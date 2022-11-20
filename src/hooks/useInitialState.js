@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useGetProducts from "./useGetProducts";
+import useGetUsers from "./useGetUsers";
 
 const API = "https://api.escuelajs.co/api/v1/products";
 
@@ -10,7 +11,9 @@ const initialState = {
 
 const useInitialState = () => {
   const newProducts = useGetProducts(API);
+  const { users, handleItems, saveUsers, findUser } = useGetUsers();
   const [state, setState] = useState(initialState);
+  const [currentUser, setCurrentUser] = useState(null);
 
   const addToCart = (payload) => {
     setState({
@@ -62,6 +65,12 @@ const useInitialState = () => {
     removeFromCart,
     removeFromCartWithId,
     sumTotal,
+    users,
+    handleItems,
+    saveUsers,
+    findUser,
+    currentUser,
+    setCurrentUser,
   };
 };
 

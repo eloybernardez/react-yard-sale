@@ -8,7 +8,8 @@ import addedToCartImage from "../assets/icons/bt_added_to_cart.svg";
 import ProductInfo from "./ProductInfo";
 
 const ProductItem = ({ product }) => {
-  const { addToCart, removeFromCartWithId } = useContext(AppContext);
+  const { addToCart, removeFromCartWithId, setToggleOrders } =
+    useContext(AppContext);
   const [open, setOpen] = useState(false);
 
   const handleClick = (item) => {
@@ -31,7 +32,11 @@ const ProductItem = ({ product }) => {
           <p>${product.price}</p>
           <p>{product.title}</p>
         </div>
-        <figure onClick={() => handleClick(product)}>
+        <figure
+          onClick={() => {
+            handleClick(product);
+          }}
+        >
           <img
             src={product.cart ? addedToCartImage : addToCartImage}
             alt="add to cart"

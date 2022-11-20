@@ -1,19 +1,25 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext, useState } from "react";
+import AppContext from "../context/AppContext";
 import "../styles/Login.scss";
 
 import logo from "../assets/logos/logo_yard_sale.svg";
 
 const Login = () => {
   const form = useRef(null);
+  const { findUser, currentUser, setCurrentUser } = useContext(AppContext);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = () => {
     const formData = new FormData(form.current); // para enviar la informacion del formulario al hacer submit
     const data = {
       username: formData.get("email"),
-      password: formData.get("password"),
+      password: Number(formData.get("password")),
     };
-    console.log(data);
+
+    // Check if user is registered
+    const correctUser = findUser(data.username, data.password);
+
+    // Log user
+    !correctUser ? setCurrentUser(null) : setCurrentUser(correctUser);
   };
 
   return (
@@ -40,7 +46,7 @@ const Login = () => {
             className="input input-password"
           />
           <button
-            type="submit"
+            type="button"
             className="primary-button login-button"
             onClick={handleSubmit}
           >
@@ -48,7 +54,9 @@ const Login = () => {
           </button>
           <a href="/password-recovery">Forgot my password</a>
         </form>
-        <button className="secondary-button signup-button">Sign up</button>
+        <button type="button" className="secondary-button signup-button">
+          Sign up
+        </button>
       </div>
     </div>
   );

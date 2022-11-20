@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/MyAccount.scss";
 
 const MyAccount = () => {
+  const { currentUser } = useContext(AppContext);
   return (
     <div className="MyAccount">
       <div className="MyAccount-container">
@@ -11,18 +12,18 @@ const MyAccount = () => {
             <label for="name" className="label">
               Name
             </label>
-            <p className="value">Camila Yokoo</p>
+            <p className="value">{currentUser.name}</p>
             <label for="email" className="label">
               Email
             </label>
-            <p className="value">camilayokoo@gmail.com</p>
+            <p className="value">{currentUser.email}</p>
             <label for="password" className="label">
               Password
             </label>
             <p className="value">*********</p>
           </div>
           <input
-            type="submit"
+            type="button"
             value="Edit"
             className="secondary-button login-button"
           />

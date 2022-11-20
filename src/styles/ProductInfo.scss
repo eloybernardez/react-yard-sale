@@ -1,5 +1,15 @@
 @import "vars";
 
+.Modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
 .ProductInfo {
   width: 350px;
   top: 50%;
@@ -13,16 +23,6 @@
   background-color: white;
 }
 
-.Modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
-
 .ProductInfo-header {
   display: flex;
   justify-content: space-between;
@@ -30,51 +30,86 @@
   margin-bottom: 20px;
 }
 
+.ProductInfo-header figure {
+  display: flex;
+  justify-content: end;
+  width: 100px;
+}
+
 .ProductInfo-header figure img {
   cursor: pointer;
+}
+
+.ProductInfo-img {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.ProductInfo-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.ProductInfo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ProductInfo-footer p {
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .ProductInfo p:nth-child(1) {
   font-weight: bold;
   font-size: var(--md);
-  margin-top: 0;
-  margin-bottom: 4px;
+  width: 100%;
+  padding-left: 10px;
 }
+
 .ProductInfo p:nth-child(2) {
   color: black;
   font-weight: bold;
-  font-size: var(--md);
-  margin-top: 0;
-  margin-bottom: 36px;
+  font-size: var(--lg);
+  width: 100px;
+  text-align: center;
 }
+
 .ProductInfo p:nth-child(3) {
   color: var(--very-light-pink);
   font-size: var(--sm);
   margin-top: 0;
   margin-bottom: 36px;
 }
-.primary-button {
+
+.primary-button--cart {
   background-color: var(--hospital-green);
-  border-radius: 8px;
-  border: none;
   color: var(--white);
-  width: 100%;
   cursor: pointer;
-  font-size: var(--md);
+  font-size: var(--sm);
   font-weight: bold;
+  border: none;
+  width: 120px;
   height: 50px;
+  border-radius: 10px;
 }
 
-.secondary-button {
+.secondary-button--cart {
   background-color: var(--white);
-  border-radius: 8px;
-  border: none;
   color: var(--hospital-green);
-  width: 100%;
-  cursor: pointer;
-  font-size: var(--md);
-  font-weight: bold;
+  width: 120px;
   height: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: var(--sm);
+  font-weight: bold;
+  border: none;
 }
 
 .add-to-cart-button {

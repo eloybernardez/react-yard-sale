@@ -16,21 +16,27 @@ const ProductInfo = ({ product, handleClose, handleClick }) => {
             <img src={close} alt="close" onClick={handleClose} />
           </figure>
         </div>
+        <figure className="ProductInfo-img">
+          <img src={product.images[0]} alt={product.title} />
+        </figure>
 
-        <p>${product.price}</p>
         <p>{product.description}</p>
-        <button
-          className={`add-to-cart-button ${
-            product.cart ? `secondary-button` : `primary-button`
-          }`}
-          onClick={() => handleClick(product)}
-        >
-          <img
-            src={!product.cart ? addToCart : addedToCart}
-            alt="add to cart"
-          />
-          {!product.cart ? "Add to cart" : "Remove from cart"}
-        </button>
+
+        <div className="ProductInfo-footer">
+          <button
+            className={`add-to-cart-button ${
+              product.cart ? `secondary-button--cart` : `primary-button--cart`
+            }`}
+            onClick={() => handleClick(product)}
+          >
+            <img
+              src={!product.cart ? addToCart : addedToCart}
+              alt="add to cart icon"
+            />
+            {!product.cart ? "Add" : "Remove"}
+          </button>
+          <p>${product.price}</p>
+        </div>
       </div>
     </div>,
     document.getElementById("product-info")

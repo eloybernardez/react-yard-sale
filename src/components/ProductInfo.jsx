@@ -1,28 +1,39 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import "../styles/ProductInfo.scss";
 
+import close from "../assets/icons/icon_close.png";
+import addedToCart from "../assets/icons/bt_added_to_cart.svg";
 import addToCart from "../assets/icons/bt_add_to_cart.svg";
 
-const ProductInfo = () => {
-  return (
-    <>
-      <img
-        src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-        alt="bike"
-      />
+const ProductInfo = ({ product, handleClose, handleClick }) => {
+  return ReactDOM.createPortal(
+    <div className="Modal">
       <div className="ProductInfo">
-        <p>$35,00</p>
-        <p>Bike</p>
-        <p>
-          With its practical position, this bike also fulfills a decorative
-          function, add your hall or workspace.
-        </p>
-        <button className="primary-button add-to-cart-button">
-          <img src={addToCart} alt="add to cart" />
-          Add to cart
+        <div className="ProductInfo-header">
+          <p>{product.title}</p>
+          <figure>
+            <img src={close} alt="close" onClick={handleClose} />
+          </figure>
+        </div>
+
+        <p>${product.price}</p>
+        <p>{product.description}</p>
+        <button
+          className={`add-to-cart-button ${
+            product.cart ? `secondary-button` : `primary-button`
+          }`}
+          onClick={() => handleClick(product)}
+        >
+          <img
+            src={!product.cart ? addToCart : addedToCart}
+            alt="add to cart"
+          />
+          {!product.cart ? "Add to cart" : "Remove from cart"}
         </button>
       </div>
-    </>
+    </div>,
+    document.getElementById("product-info")
   );
 };
 

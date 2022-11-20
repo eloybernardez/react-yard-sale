@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import AppContext from "../context/AppContext";
 
 import "../styles/Menu.scss";
 
 const Menu = ({ setToggle, setToggleOrders }) => {
+  const { setCurrentUser } = useContext(AppContext);
   return (
     <div className="Menu">
       <ul>
@@ -32,13 +34,14 @@ const Menu = ({ setToggle, setToggleOrders }) => {
         </li>
         <li>
           <Link
-            to="/login"
+            to="/"
             onClick={() => {
               setToggleOrders(false);
               setToggle(false);
+              setCurrentUser(null);
             }}
           >
-            Login
+            Logout
           </Link>
         </li>
       </ul>

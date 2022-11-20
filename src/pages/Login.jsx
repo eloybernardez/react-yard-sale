@@ -1,4 +1,5 @@
 import React, { useRef, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AppContext from "../context/AppContext";
 import "../styles/Login.scss";
 
@@ -7,6 +8,7 @@ import logo from "../assets/logos/logo_yard_sale.svg";
 const Login = () => {
   const form = useRef(null);
   const [error, setError] = useState(false);
+  let navigate = useNavigate();
   const { findUser, setCurrentUser } = useContext(AppContext);
 
   const handleSubmit = () => {
@@ -20,8 +22,11 @@ const Login = () => {
     // Check if user is registered
     const correctUser = findUser(data.username, data.password);
 
-    // Log user
-    !correctUser ? setError(true) : setCurrentUser(correctUser);
+    // Guard clause
+    if (!correctUser) return setError(true);
+    // Continue logging
+    setCurrentUser(correctUser);
+    navigate("/");
   };
 
   return (
@@ -33,10 +38,11 @@ const Login = () => {
             Email address
           </label>
           <input
-            type="text"
+            type="email"
             name="email"
             placeholder="janedoe@example.com"
             className={`input input-email ${error ? `input--error` : null}`}
+            required
           />
           <label htmlFor="password" className="label">
             Password
@@ -46,6 +52,7 @@ const Login = () => {
             name="password"
             placeholder="*********"
             className={`input input-password ${error ? `input--error` : null}`}
+            required
           />
           <button
             type="button"

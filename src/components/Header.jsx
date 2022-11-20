@@ -13,6 +13,7 @@ const Header = () => {
   const [toggle, setToggle] = useState(false);
   const [toggleMobile, setToggleMobile] = useState(false);
   const [toggleOrders, setToggleOrders] = useState(false);
+
   const { state, updateProducts, currentUser } = useContext(AppContext);
 
   const handleToggle = () => {
@@ -115,14 +116,19 @@ const Header = () => {
       </div>
       <div className="navbar-right">
         <ul>
-          <li
-            className="navbar-email"
-            onClick={() => {
-              handleToggle();
-              setToggleOrders(false);
-            }}
-          >
-            {currentUser ? currentUser.email : <Link to="/login">Login</Link>}
+          <li className="navbar-email">
+            {currentUser ? (
+              <p
+                onClick={() => {
+                  setToggleOrders(false);
+                  handleToggle();
+                }}
+              >
+                {currentUser.email}
+              </p>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
           </li>
           <li
             className="navbar-shopping-cart"

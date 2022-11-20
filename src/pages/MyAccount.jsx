@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import AppContext from "../context/AppContext";
 import "../styles/MyAccount.scss";
 
 const MyAccount = () => {

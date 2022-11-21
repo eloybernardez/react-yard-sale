@@ -40,11 +40,21 @@ const useGetUsers = () => {
     return findedUser || false;
   };
 
-  const handleItems = (user, item) => {
-    setUsers([...users, { ...user, cart: [...user.cart, item] }]);
+  const handleItems = (user, items) => {
+    const findedUser = findUser(user.email, user.pass);
+
+    const newUsers = users.filter(
+      (user) => user.email !== findedUser.email && user.pass !== findedUser.pass
+    );
+    setUsers([
+      ...newUsers,
+      { ...findedUser, cart: [...findedUser.cart, ...items] },
+    ]);
+
+    saveUsers(users);
   };
 
-  return { users, findUser, handleItems, saveUsers };
+  return { users, findUser, handleItems, saveUsers, getUsers };
 };
 
 export default useGetUsers;

@@ -7,7 +7,7 @@ import "../styles/MyOrder.scss";
 
 import close from "../assets/icons/icon_close.png";
 
-const MyOrder = ({ toggleOrders, setToggleOrders }) => {
+const MyOrder = ({ setToggle, toggleOrders, setToggleOrders }) => {
   const { state, sumTotal, currentUser } = useContext(AppContext);
 
   return (

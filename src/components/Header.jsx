@@ -149,6 +149,7 @@ const Header = () => {
       {toggleOrders ? (
         <MyOrder
           toggleOrders={toggleOrders}
+          setToggle={setToggle}
           setToggleOrders={setToggleOrders}
         />
       ) : null}

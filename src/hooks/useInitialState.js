@@ -11,7 +11,7 @@ const initialState = {
 
 const useInitialState = () => {
   const newProducts = useGetProducts(API);
-  const { users, handleItems, saveUsers, findUser } = useGetUsers();
+  const { users, handleItems, saveUsers, findUser, getUsers } = useGetUsers();
   const [state, setState] = useState(initialState);
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -71,6 +71,7 @@ const useInitialState = () => {
     findUser,
     currentUser,
     setCurrentUser,
+    getUsers,
   };
 };
 

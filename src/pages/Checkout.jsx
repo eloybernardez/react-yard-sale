@@ -4,7 +4,7 @@ import OrderItem from "../components/OrderItem";
 import "../styles/Checkout.scss";
 
 const Checkout = () => {
-  const { state, sumTotal } = useContext(AppContext);
+  const { state, sumTotal, handleItems, currentUser } = useContext(AppContext);
   const date = new Date().toLocaleDateString("en-US");
 
   return (
@@ -33,6 +33,15 @@ const Checkout = () => {
                 <p>There are no products in your cart</p>
               )}
             </div>
+            <button
+              className="primary-button"
+              type="button"
+              onClick={() => {
+                handleItems(currentUser, state.cart);
+              }}
+            >
+              Buy
+            </button>
           </div>
         </div>
       </div>

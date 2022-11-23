@@ -5,7 +5,8 @@ import AppContext from "../context/AppContext";
 import "../styles/MenuMobile.scss";
 
 const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
-  const { updateProducts } = useContext(AppContext);
+  const { updateProducts, currentUser, setCurrentUser } =
+    useContext(AppContext);
   return (
     <div className="MenuMobile">
       <figure>
@@ -18,14 +19,23 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
 
       <ul>
         <li>
-          <button className="nav-button" onClick={() => updateProducts("")}>
+          <button
+            className="nav-button"
+            onClick={() => {
+              setToggleMobile(false);
+              updateProducts("");
+            }}
+          >
             All
           </button>
         </li>
         <li>
           <button
             className="nav-button"
-            onClick={() => updateProducts("Clothes")}
+            onClick={() => {
+              setToggleMobile(false);
+              updateProducts("Clothes");
+            }}
           >
             Clothes
           </button>
@@ -33,7 +43,10 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
         <li>
           <button
             className="nav-button"
-            onClick={() => updateProducts("Electronics")}
+            onClick={() => {
+              setToggleMobile(false);
+              updateProducts("Electronics");
+            }}
           >
             Electronics
           </button>
@@ -41,20 +54,32 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
         <li>
           <button
             className="nav-button"
-            onClick={() => updateProducts("Furniture")}
+            onClick={() => {
+              setToggleMobile(false);
+              updateProducts("Furniture");
+            }}
           >
             Furnitures
           </button>
         </li>
         <li>
-          <button className="nav-button" onClick={() => updateProducts("Toys")}>
+          <button
+            className="nav-button"
+            onClick={() => {
+              setToggleMobile(false);
+              updateProducts("Toys");
+            }}
+          >
             Toys
           </button>
         </li>
         <li>
           <button
             className="nav-button"
-            onClick={() => updateProducts("Others")}
+            onClick={() => {
+              setToggleMobile(false);
+              updateProducts("Others");
+            }}
           >
             Others
           </button>
@@ -62,23 +87,38 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
       </ul>
       <ul>
         <li>
-          <Link className="title" to="/orders">
+          <Link
+            className={`title ${!currentUser ? "disabled" : ""}`}
+            to="/orders"
+            onClick={() => setToggleMobile(false)}
+          >
             My orders
           </Link>
         </li>
         <li>
-          <Link className="title" to="/account">
-            My account
+          <Link
+            to="/account"
+            className={`title ${!currentUser ? "disabled" : ""}`}
+            onClick={() => setToggleMobile(false)}
+          >
+            My Account
           </Link>
         </li>
       </ul>
       <ul>
         <li>
-          <p className="email">eloy@example.com</p>
+          <p className="email">{currentUser ? currentUser.email : "Guest"}</p>
         </li>
         <li>
-          <Link className="sign-out" to="/login">
-            Sign out
+          <Link
+            className="sign-out"
+            to="/login"
+            onClick={() => {
+              setToggleMobile(false);
+              currentUser ? setCurrentUser(null) : null;
+            }}
+          >
+            {currentUser ? "Sign out" : "Sign in"}
           </Link>
         </li>
       </ul>

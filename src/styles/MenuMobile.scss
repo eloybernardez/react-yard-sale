@@ -26,7 +26,6 @@
   text-decoration: none;
   color: var(--black);
   font-weight: bold;
-  /* margin-bottom: 24px; */
 }
 
 .MenuMobile button:focus {
@@ -46,6 +45,11 @@
   font-weight: bold;
   margin-bottom: 24px;
   text-decoration: none;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .MenuMobile ul {

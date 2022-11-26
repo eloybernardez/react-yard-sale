@@ -89,7 +89,7 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
         <li>
           <Link
             className={`title ${!currentUser ? "disabled" : ""}`}
-            to="/orders"
+            to={`${currentUser ? "/orders" : "/login"}`}
             onClick={() => setToggleMobile(false)}
           >
             My orders
@@ -97,7 +97,7 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
         </li>
         <li>
           <Link
-            to="/account"
+            to={`${currentUser ? "/account" : "/login"}`}
             className={`title ${!currentUser ? "disabled" : ""}`}
             onClick={() => setToggleMobile(false)}
           >

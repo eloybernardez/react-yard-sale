@@ -16,7 +16,7 @@ const Orders = () => {
       <div className="Orders-container">
         <h1 className="title">Confirmed orders</h1>
         <div className="Orders-content">
-          <p>{date}</p>
+          <p className="title">{date}</p>
           {!currentUser.cart
             ? null
             : cart.map((item, index) => (

@@ -1,4 +1,5 @@
 import React, { useRef, useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import AppContext from "../context/AppContext";
 import "../styles/Login.scss";
@@ -61,7 +62,7 @@ const Login = () => {
           >
             Log in
           </button>
-          <a href="/password-recovery">Forgot my password</a>
+          <Link to="/password-recovery">Forgot my password</Link>
         </form>
         <button type="button" className="secondary-button signup-button">
           Sign up

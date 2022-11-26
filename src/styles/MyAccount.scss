@@ -52,10 +52,34 @@
   font-weight: bold;
   height: 50px;
 }
-.login-button {
-  margin-top: 14px;
-  margin-bottom: 30px;
+
+.logged-out__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 30px;
+  background-color: var(--hospital-green);
+  border-radius: 8px;
+  color: var(--white);
+  text-decoration: none;
+  padding: 8px 10px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.edit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 640px) {
   .form-container {
     height: 100%;

@@ -1,0 +1,68 @@
+@import "vars";
+
+.LoadingState__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 240px);
+  gap: 26px;
+  place-content: center;
+  margin: 5rem 0 0 0;
+}
+
+@keyframes LoadingState__animation {
+  0% {
+    background-color: #fff;
+  }
+  50% {
+    background-color: #eee;
+  }
+  100% {
+    background-color: #ccc;
+  }
+}
+
+.LoadingState__item .LoadingState__img {
+  animation-name: LoadingState__animation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  width: 240px;
+  height: 240px;
+  border-radius: 20px;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+.LoadingState__text__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.LoadingState__text__container div {
+  animation-name: LoadingState__animation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  width: 50px;
+  height: 12px;
+}
+
+.LoadingState__text__container div div {
+  margin-bottom: 8px;
+}
+
+.LoadingState__item figure {
+  animation-name: LoadingState__animation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  margin: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid var(--very-light-pink);
+}
+
+@media (max-width: 640px) {
+  .LoadingState__container {
+    grid-template-columns: repeat(auto-fill, 140px);
+  }
+}

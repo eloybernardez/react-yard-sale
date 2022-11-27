@@ -1,6 +1,6 @@
-# react-shop
+# React Yard Sale
 
-An e-commerce app created in a Platzi course. I've added some new functionaties like login auth, saved ordered products in Local Storage and item previsualization.
+An e-commerce app created in a Platzi course. I've added some new functionaties like login auth, saved ordered products in Local Storage, change password, recover lost password and item previsualization.
 
 - HTML
 - CSS3

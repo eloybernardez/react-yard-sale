@@ -36,23 +36,17 @@ const MyOrder = ({ setToggle, toggleOrders, setToggleOrders }) => {
           </p>
           <p className="order-price">${sumTotal()}</p>
         </div>
-        <button
-          className="primary-button"
+
+        <Link
+          className="primary-button button-checkout"
           onClick={() => {
             setToggleOrders(false);
             setToggle(false);
           }}
+          to={currentUser ? "/checkout" : "/login"}
         >
-          {currentUser ? (
-            <Link className="button-text" to="/checkout">
-              Checkout
-            </Link>
-          ) : (
-            <Link className="button-text" to="/login">
-              Log in to buy
-            </Link>
-          )}
-        </button>
+          {currentUser ? "Checkout" : "Login to buy"}
+        </Link>
       </div>
     </aside>
   );

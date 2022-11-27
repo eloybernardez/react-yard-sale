@@ -34,7 +34,7 @@ const Checkout = () => {
               )}
             </div>
             <button
-              className="primary-button"
+              className="primary-button button-checkout"
               type="button"
               onClick={() => {
                 handleItems(currentUser, state.cart);

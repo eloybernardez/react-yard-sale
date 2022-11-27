@@ -31,8 +31,9 @@
 
 .button-text {
   text-decoration: none;
-  color: var(--text-input-field);
+  color: var(--white);
 }
+
 .order {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -56,6 +57,14 @@
   font-weight: bold;
 }
 
+.button-checkout {
+  text-decoration: none;
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .primary-button {
   background-color: var(--hospital-green);
   border-radius: 8px;
@@ -67,6 +76,11 @@
   font-weight: bold;
   height: 50px;
 }
+
+.primary-button--hover {
+  color: var(--hospital-green);
+}
+
 @media (max-width: 640px) {
   .MyOrder {
     width: 100%;

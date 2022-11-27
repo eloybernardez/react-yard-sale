@@ -21,7 +21,6 @@ const NewPassword = () => {
 
     const newUsers = [...oldUsers, changedPasswordUser];
 
-    console.log(newUsers);
     setUsers(newUsers);
     saveUsers(newUsers);
   };

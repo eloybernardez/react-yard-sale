@@ -27,7 +27,6 @@
   width: 240px;
   height: 240px;
   border-radius: 20px;
-  cursor: pointer;
   object-fit: cover;
 }
 
@@ -64,5 +63,13 @@
 @media (max-width: 640px) {
   .LoadingState__container {
     grid-template-columns: repeat(auto-fill, 140px);
+  }
+
+  .LoadingState__item {
+    width: 140px;
+  }
+  .LoadingState__item .LoadingState__img {
+    width: 140px;
+    height: 140px;
   }
 }

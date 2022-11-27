@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const useInitialState = () => {
-  const newProducts = useGetProducts(API);
+  const { products, loading } = useGetProducts(API);
   const { users, setUsers, handleItems, saveUsers, findUser, getUsers } =
     useGetUsers();
   const [state, setState] = useState(initialState);
@@ -42,12 +42,13 @@ const useInitialState = () => {
   };
 
   const updateProducts = (string) => {
-    const filterProducts = newProducts.filter(
+    const filterProducts = products.filter(
       (product) => product.category.name === string
     );
+
     setState({
       ...state,
-      products: filterProducts.length ? filterProducts : [...newProducts],
+      products: filterProducts.length ? filterProducts : [...products],
     });
   };
 
@@ -60,7 +61,8 @@ const useInitialState = () => {
 
   return {
     state,
-    newProducts,
+    products,
+    loading,
     updateProducts,
     addToCart,
     removeFromCart,

@@ -1,14 +1,11 @@
-import React, { Suspense, lazy } from "react";
+import React, { useContext } from "react";
+import AppContext from "../context/AppContext";
 import LoadingState from "../containers/LoadingState";
-// import ProductList from "../containers/ProductList";
+import ProductList from "../containers/ProductList";
 
 const Home = () => {
-  const ProductList = lazy(() => import("../containers/ProductList"));
-  return (
-    <Suspense fallback={<LoadingState />}>
-      <ProductList />
-    </Suspense>
-  );
+  const { loading } = useContext(AppContext);
+  return !loading ? <ProductList /> : <LoadingState />;
 };
 
 export default Home;

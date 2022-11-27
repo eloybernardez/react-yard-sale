@@ -4,12 +4,13 @@ import ProductItem from "../components/ProductItem";
 import "../styles/ProductList.scss";
 
 const ProductList = () => {
-  const { state, newProducts } = useContext(AppContext);
-  const products = state.products.length ? state.products : newProducts;
+  const { state, products } = useContext(AppContext);
+  const newProducts = state.products.length ? state.products : products;
+
   return (
     <section className="main-container">
       <div className="ProductList">
-        {products.map((product, index) => {
+        {newProducts.map((product, index) => {
           return (
             <ProductItem
               product={product}

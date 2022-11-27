@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import NotLogged from "../components/NotLogged";
 import AppContext from "../context/AppContext";
 import "../styles/MyAccount.scss";
 
@@ -32,12 +33,7 @@ const MyAccount = () => {
             </form>
           </>
         ) : (
-          <div className="logged-out__container">
-            <h2 className="title">You are not logged in</h2>
-            <Link className="login-button" to="/login">
-              Login
-            </Link>
-          </div>
+          <NotLogged />
         )}
       </div>
     </div>

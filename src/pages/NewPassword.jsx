@@ -1,40 +1,84 @@
-import React from "react";
+import React, { useContext, useState, useRef } from "react";
+import ModalConfirm from "../components/ModalConfirm";
 import "../styles/NewPassword.scss";
 
 import logo from "../assets/logos/logo_yard_sale.svg";
+import AppContext from "../context/AppContext";
+import NotLogged from "../components/NotLogged";
 
 const NewPassword = () => {
+  const { currentUser } = useContext(AppContext);
+  const [modal, setModal] = useState(false);
+  const [error, setError] = useState(false);
+  const form = useRef(null);
+
+  const validatePassword = () => {
+    const userInputs = new FormData(form.current);
+
+    const data = {
+      password: userInputs.get("password"),
+      newPassword: userInputs.get("newPassword"),
+    };
+
+    setError(false);
+    return data.password === data.newPassword;
+  };
+
   return (
     <div className="NewPassword">
       <div className="NewPassword-container">
-        <img src={logo} alt="logo" className="logo" />
-        <h1 className="title">Create a new password</h1>
-        <p className="subtitle">Enter a new password for your account</p>
-        <form action="/" className="form">
-          <label for="password" className="label">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            placeholder="*********"
-            className="input input-password"
+        {modal ? (
+          <ModalConfirm
+            setModal={setModal}
+            title={"Password changed"}
+            message={"You changed your password correctly!"}
           />
-          <label for="new-password" className="label">
-            Password
-          </label>
-          <input
-            type="password"
-            id="new-password"
-            placeholder="*********"
-            className="input input-password"
-          />
-          <input
-            type="submit"
-            value="Confirm"
-            className="primary-button login-button"
-          />
-        </form>
+        ) : null}
+        {currentUser ? (
+          <>
+            <img src={logo} alt="logo" className="logo" />
+            <h1 className="title">Create a new password</h1>
+            <p className="subtitle">Enter a new password for your account</p>
+            <form action="/" className="form" ref={form}>
+              <label htmlFor="password" className="label">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="*********"
+                className={`input input-password ${
+                  error ? "input--error" : ""
+                }`}
+                required
+              />
+              <label htmlFor="new-password" className="label">
+                Confirm new Password
+              </label>
+              <input
+                type="password"
+                name="newPassword"
+                id="new-password"
+                placeholder="*********"
+                className={`input input-password ${
+                  error ? "input--error" : ""
+                }`}
+                required
+              />
+              <input
+                type="button"
+                value="Confirm"
+                className="primary-button login-button"
+                onClick={() =>
+                  validatePassword() ? setModal(true) : setError(true)
+                }
+              />
+            </form>
+          </>
+        ) : (
+          <NotLogged />
+        )}
       </div>
     </div>
   );

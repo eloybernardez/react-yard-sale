@@ -4,7 +4,7 @@ import "../styles/ModalConfirm.scss";
 
 import email from "../assets/icons/email.svg";
 
-const ModalConfirm = ({ title, message }) => {
+const ModalConfirm = ({ setModal, title, message }) => {
   return createPortal(
     <div className="modal">
       <div className="modal__container">
@@ -13,6 +13,13 @@ const ModalConfirm = ({ title, message }) => {
         </figure>
         <h3 className="modal__title">{title}</h3>
         <p className="modal__message">{message}</p>
+        <button
+          type="button"
+          className="primary-button primary-button--modal"
+          onClick={() => setModal(false)}
+        >
+          Close
+        </button>
       </div>
     </div>,
     document.getElementById("modal-root")

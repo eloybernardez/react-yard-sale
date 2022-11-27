@@ -1,0 +1,39 @@
+.logged-out__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logged-out__container h2 {
+  text-align: center;
+  margin: 16px 0;
+}
+
+.logged-out__container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 50px;
+  background-color: var(--hospital-green);
+  border-radius: 8px;
+  color: var(--white);
+  text-decoration: none;
+  padding: 8px 10px;
+  width: 93%;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.logged-out__container a:hover {
+  background-color: transparent;
+  color: var(--hospital-green);
+  outline: 1px solid var(--hospital-green);
+}
+
+.logged-out__container img {
+  width: 70%;
+  height: 70%;
+  margin: 0 auto;
+}

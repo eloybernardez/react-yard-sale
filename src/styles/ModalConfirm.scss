@@ -24,6 +24,9 @@
   width: 20%;
   height: auto;
 }
+.primary-button--modal {
+  background-color: var(--red);
+}
 
 .modal__icon img {
   width: 100%;
@@ -39,4 +42,10 @@
 .modal__message {
   font-size: 1.2rem;
   color: var(--black);
+}
+
+@media screen and (max-width: 768px) {
+  .modal__container {
+    width: 80%;
+  }
 }

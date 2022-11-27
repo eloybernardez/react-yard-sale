@@ -54,7 +54,7 @@ const useGetUsers = () => {
     saveUsers(users);
   };
 
-  return { users, findUser, handleItems, saveUsers, getUsers };
+  return { users, setUsers, findUser, handleItems, saveUsers, getUsers };
 };
 
 export default useGetUsers;

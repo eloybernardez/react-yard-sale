@@ -23,6 +23,7 @@ const Login = () => {
     // Check if user is registered
     const correctUser = findUser(data.username, data.password);
 
+    console.log(data);
     // Guard clause
     if (!correctUser) return setError(true);
     // Continue logging

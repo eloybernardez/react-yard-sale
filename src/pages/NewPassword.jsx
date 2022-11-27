@@ -7,10 +7,24 @@ import AppContext from "../context/AppContext";
 import NotLogged from "../components/NotLogged";
 
 const NewPassword = () => {
-  const { currentUser } = useContext(AppContext);
+  const { currentUser, saveUsers, users, setUsers } = useContext(AppContext);
   const [modal, setModal] = useState(false);
   const [error, setError] = useState(false);
   const form = useRef(null);
+
+  const changePassword = (newPassword) => {
+    const oldUser = users.find((user) => user.email === currentUser.email);
+
+    const changedPasswordUser = { ...oldUser, pass: Number(newPassword) };
+
+    const oldUsers = users.filter((user) => user.email !== currentUser.email);
+
+    const newUsers = [...oldUsers, changedPasswordUser];
+
+    console.log(newUsers);
+    setUsers(newUsers);
+    saveUsers(newUsers);
+  };
 
   const validatePassword = () => {
     const userInputs = new FormData(form.current);
@@ -21,6 +35,9 @@ const NewPassword = () => {
     };
 
     setError(false);
+    data.password === data.newPassword
+      ? changePassword(data.newPassword)
+      : null;
     return data.password === data.newPassword;
   };
 

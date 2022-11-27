@@ -11,7 +11,8 @@ const initialState = {
 
 const useInitialState = () => {
   const newProducts = useGetProducts(API);
-  const { users, handleItems, saveUsers, findUser, getUsers } = useGetUsers();
+  const { users, setUsers, handleItems, saveUsers, findUser, getUsers } =
+    useGetUsers();
   const [state, setState] = useState(initialState);
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -66,6 +67,7 @@ const useInitialState = () => {
     removeFromCartWithId,
     sumTotal,
     users,
+    setUsers,
     handleItems,
     saveUsers,
     findUser,

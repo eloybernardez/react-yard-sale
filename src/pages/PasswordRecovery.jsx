@@ -18,7 +18,6 @@ const PasswordRecovery = () => {
       email: userInputs.get("email"),
     };
 
-    console.log(error);
     setError(false);
     return users.some((user) => user.email === data.email);
   };

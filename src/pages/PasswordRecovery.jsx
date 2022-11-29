@@ -38,8 +38,12 @@ const PasswordRecovery = () => {
           Inform the email address used to create your account
         </p>
         <form action="/" className="form" ref={form}>
-          <label htmlFor="email" className="label">
-            Email address
+          <label
+            htmlFor="email"
+            className={`label ${error ? "label--error" : ""}`}
+            onKeyDown={() => setError(false)}
+          >
+            {error ? "Email not found" : "Email adress"}
           </label>
           <input
             type="email"

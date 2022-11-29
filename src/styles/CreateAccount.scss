@@ -35,6 +35,11 @@
   font-weight: bold;
   margin-bottom: 4px;
 }
+
+.label--error {
+  color: var(--red);
+}
+
 .CreateAccount form .input {
   background-color: var(--text-input-field);
   border: none;

@@ -32,7 +32,7 @@ const CreateAccount = () => {
 
   async function handleModal(confirm) {
     setModal(confirm);
-    setTimeout(() => navigate("/"), 2000);
+    setTimeout(() => navigate("/"), 1000);
   }
 
   const addNewUser = (name, email, pass) => {
@@ -62,13 +62,14 @@ const CreateAccount = () => {
               name="name"
               id="name"
               placeholder="Jane"
-              className={
-                error ? "input input-name input--error" : "input input-name"
-              }
+              className="input input-name"
               required
             />
-            <label htmlFor="email" className="label">
-              Email
+            <label
+              htmlFor="email"
+              className={error ? "label label--error" : "label"}
+            >
+              {error ? "Email already registered" : "Email"}
             </label>
             <input
               type="email"
@@ -78,6 +79,7 @@ const CreateAccount = () => {
               className={
                 error ? "input input-email input--error" : "input input-email"
               }
+              onKeyDown={() => setError(false)}
               required
             />
             <label htmlFor="password" className="label">
@@ -88,11 +90,7 @@ const CreateAccount = () => {
               name="pass"
               id="pass"
               placeholder="*********"
-              className={
-                error
-                  ? "input input-password input--error"
-                  : "input input-password"
-              }
+              className="input input-password"
               required
             />
           </div>

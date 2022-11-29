@@ -36,24 +36,32 @@ const Login = () => {
       <div className="Login-container">
         <img src={logo} alt="logo" className="logo" />
         <form action="/" className="form" ref={form}>
-          <label htmlFor="email" className="label">
-            Email address
+          <label
+            htmlFor="email"
+            className={`label ${error ? "label--error" : ""}`}
+          >
+            {error ? "Incorrect email or password" : "Email"}
           </label>
           <input
             type="email"
             name="email"
             placeholder="janedoe@example.com"
             className={`input input-email ${error ? `input--error` : null}`}
+            onKeyDown={() => setError(false)}
             required
           />
-          <label htmlFor="password" className="label">
-            Password
+          <label
+            htmlFor="password"
+            className={`label ${error ? "label--error" : ""}`}
+          >
+            {error ? "Incorrect email or password" : "Password"}
           </label>
           <input
             type="password"
             name="password"
             placeholder="*********"
             className={`input input-password ${error ? `input--error` : null}`}
+            onKeyDown={() => setError(false)}
             required
           />
           <button

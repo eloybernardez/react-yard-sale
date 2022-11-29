@@ -117,3 +117,9 @@
   align-items: center;
   justify-content: center;
 }
+
+@media screen and (max-width: 450px) {
+  .ProductInfo {
+    width: 300px;
+  }
+}

@@ -8,9 +8,10 @@ const useGetProducts = (API) => {
   useEffect(() => {
     async function fetchData() {
       const response = await axios(API);
-      setProducts(response.data);
       setLoading(false);
+      setProducts(response.data);
     }
+
     fetchData();
   }, []);
   return { loading, products };

@@ -5,13 +5,15 @@
   height: 100vh;
   display: grid;
   place-items: center;
-  margin-top: 24px;
+  padding-top: 35px;
 }
+
 .Login-container {
   display: grid;
   grid-template-rows: auto 1fr auto;
   width: 300px;
 }
+
 .logo {
   width: 150px;
   margin-bottom: 48px;
@@ -63,6 +65,10 @@
   height: 50px;
 }
 
+.Login .Login-container .primary-button {
+  height: 50px;
+}
+
 .primary-button:hover {
   background-color: transparent;
   color: var(--hospital-green);
@@ -90,8 +96,26 @@
   margin-top: 14px;
   margin-bottom: 30px;
 }
+
+.signup-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14px;
+  margin-bottom: 30px;
+  text-decoration: none;
+}
+
+.Login .Login-container .signup-button:hover {
+  background-color: var(--hospital-green);
+  color: var(--white);
+}
 @media (max-width: 640px) {
   .logo {
     display: block;
+  }
+
+  .Login {
+    padding-top: 40px;
   }
 }

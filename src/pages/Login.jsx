@@ -13,7 +13,7 @@ const Login = () => {
   const { findUser, setCurrentUser } = useContext(AppContext);
 
   const handleSubmit = () => {
-    const formData = new FormData(form.current); // para enviar la informacion del formulario al hacer submit
+    const formData = new FormData(form.current);
     const data = {
       username: formData.get("email"),
       password: Number(formData.get("password")),
@@ -65,9 +65,9 @@ const Login = () => {
           </button>
           <Link to="/password-recovery">Forgot my password</Link>
         </form>
-        <button type="button" className="secondary-button signup-button">
+        <Link to="/signup" className="secondary-button signup-button">
           Sign up
-        </button>
+        </Link>
       </div>
     </div>
   );

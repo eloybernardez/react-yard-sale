@@ -7,7 +7,7 @@ import AppContext from "../context/AppContext";
 import NotLogged from "../components/NotLogged";
 
 const NewPassword = () => {
-  const { currentUser, saveUsers, users, setUsers } = useContext(AppContext);
+  const { currentUser, saveData, users, setUsers } = useContext(AppContext);
   const [modal, setModal] = useState(false);
   const [error, setError] = useState(false);
   const form = useRef(null);
@@ -22,7 +22,7 @@ const NewPassword = () => {
     const newUsers = [...oldUsers, changedPasswordUser];
 
     setUsers(newUsers);
-    saveUsers(newUsers);
+    saveData("users", newUsers);
   };
 
   const validatePassword = () => {

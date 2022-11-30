@@ -17,17 +17,17 @@ const initialUsers = [
   { name: "Judith", email: "judith@gmail.com", pass: 6789, cart: [] },
 ];
 
-const getUsers = () => {
-  const oldUsers = window.localStorage.getItem("users");
-  return oldUsers ? JSON.parse(oldUsers) : initialUsers;
+const getData = (data, initialData = initialUsers) => {
+  const oldData = window.localStorage.getItem(data);
+  return oldData ? JSON.parse(oldData) : initialData;
 };
 
-const saveUsers = (users) => {
-  const stringUsers = JSON.stringify(users);
-  window.localStorage.setItem("users", stringUsers);
+const saveData = (data, dataToStore) => {
+  const stringData = JSON.stringify(dataToStore);
+  window.localStorage.setItem(data, stringData);
 };
 
-const storagedUsers = getUsers();
+const storagedUsers = getData("users", initialUsers);
 
 const useGetUsers = () => {
   const [users, setUsers] = useState(storagedUsers);
@@ -51,10 +51,10 @@ const useGetUsers = () => {
       { ...findedUser, cart: [...findedUser.cart, ...items] },
     ]);
 
-    saveUsers(users);
+    saveData("users", users);
   };
 
-  return { users, setUsers, findUser, handleItems, saveUsers, getUsers };
+  return { users, setUsers, findUser, handleItems, saveData, getData };
 };
 
 export default useGetUsers;

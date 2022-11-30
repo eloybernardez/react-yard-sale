@@ -5,7 +5,7 @@ import AppContext from "../context/AppContext";
 import "../styles/CreateAccount.scss";
 
 const CreateAccount = () => {
-  const { setUsers, users, saveUsers, state } = useContext(AppContext);
+  const { setUsers, users, saveData, state } = useContext(AppContext);
   const navigate = useNavigate();
   const [error, setError] = useState(false);
   const [modal, setModal] = useState(false);
@@ -38,7 +38,7 @@ const CreateAccount = () => {
   const addNewUser = (name, email, pass) => {
     const newUser = { name, email, pass, cart: [...state.cart] };
     setUsers([...users, newUser]);
-    saveUsers([...users, newUser]);
+    saveData("users", [...users, newUser]);
   };
 
   return (

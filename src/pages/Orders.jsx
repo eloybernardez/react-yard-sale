@@ -5,9 +5,9 @@ import OrderItem from "../components/OrderItem";
 import "../styles/Orders.scss";
 
 const Orders = () => {
-  const { currentUser, getUsers } = useContext(AppContext);
+  const { currentUser, getData } = useContext(AppContext);
   const email = currentUser?.email;
-  const users = getUsers();
+  const users = getData("users");
   const { cart } = users.find((user) => user.email === email);
 
   const date = new Date().toLocaleDateString("en-US");
@@ -17,14 +17,13 @@ const Orders = () => {
         <h1 className="title">Confirmed orders</h1>
         <div className="Orders-content">
           <p className="title">{date}</p>
-          {!currentUser.cart
-            ? null
-            : cart.map((item, index) => (
-                <OrderItem
-                  product={item}
-                  indexValue={`ordered-item-${index}`}
-                />
-              ))}
+          {!currentUser.cart ? (
+            <p>No confirmed orders yet. Buy something 💪</p>
+          ) : (
+            cart.map((item, index) => (
+              <OrderItem product={item} indexValue={`ordered-item-${index}`} />
+            ))
+          )}
         </div>
       </div>
     </div>

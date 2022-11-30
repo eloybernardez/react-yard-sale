@@ -11,9 +11,9 @@ const initialState = {
 
 const useInitialState = () => {
   const { products, loading } = useGetProducts(API);
-  const { users, setUsers, handleItems, saveUsers, findUser, getUsers } =
+  const { users, setUsers, handleItems, saveData, findUser, getData } =
     useGetUsers();
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState(getData("cart", initialState));
   const [currentUser, setCurrentUser] = useState(null);
 
   const addToCart = (payload) => {
@@ -21,6 +21,8 @@ const useInitialState = () => {
       ...state,
       cart: [...state.cart, payload],
     });
+
+    saveData("cart", { ...state, cart: [...state.cart, payload] });
   };
 
   const removeFromCart = (key) => {
@@ -30,10 +32,20 @@ const useInitialState = () => {
         return key !== index;
       }),
     });
+    saveData("cart", {
+      ...state,
+      cart: state.cart.filter((_, index) => key !== index),
+    });
   };
 
   const removeFromCartWithId = (id) => {
     setState({
+      ...state,
+      cart: state.cart.filter((product) => {
+        return product.id !== id;
+      }),
+    });
+    saveData("cart", {
       ...state,
       cart: state.cart.filter((product) => {
         return product.id !== id;
@@ -71,11 +83,11 @@ const useInitialState = () => {
     users,
     setUsers,
     handleItems,
-    saveUsers,
+    saveData,
     findUser,
     currentUser,
     setCurrentUser,
-    getUsers,
+    getData,
   };
 };
 

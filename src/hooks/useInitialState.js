@@ -17,40 +17,35 @@ const useInitialState = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   const addToCart = (payload) => {
-    setState({
+    const stateToSave = {
       ...state,
       cart: [...state.cart, payload],
-    });
+    };
+    setState(stateToSave);
 
-    saveData("cart", { ...state, cart: [...state.cart, payload] });
+    saveData("cart", stateToSave);
   };
 
   const removeFromCart = (key) => {
-    setState({
+    const stateToSave = {
       ...state,
       cart: state.cart.filter((_, index) => {
         return key !== index;
       }),
-    });
-    saveData("cart", {
-      ...state,
-      cart: state.cart.filter((_, index) => key !== index),
-    });
+    };
+    setState(stateToSave);
+    saveData("cart", stateToSave);
   };
 
   const removeFromCartWithId = (id) => {
-    setState({
+    const stateToSave = {
       ...state,
       cart: state.cart.filter((product) => {
         return product.id !== id;
       }),
-    });
-    saveData("cart", {
-      ...state,
-      cart: state.cart.filter((product) => {
-        return product.id !== id;
-      }),
-    });
+    };
+    setState(stateToSave);
+    saveData("cart", stateToSave);
   };
 
   const updateProducts = (string) => {

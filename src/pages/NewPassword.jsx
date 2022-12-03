@@ -1,5 +1,7 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import ModalConfirm from "../components/ModalConfirm";
+import useModal from "../hooks/useModal";
+import useValidation from "../hooks/useValidation";
 import "../styles/NewPassword.scss";
 
 import logo from "../assets/logos/logo_yard_sale.svg";
@@ -7,38 +9,10 @@ import AppContext from "../context/AppContext";
 import NotLogged from "../components/NotLogged";
 
 const NewPassword = () => {
-  const { currentUser, saveData, users, setUsers } = useContext(AppContext);
-  const [modal, setModal] = useState(false);
-  const [error, setError] = useState(false);
+  const { currentUser } = useContext(AppContext);
+  const { error, setError, validatePassword } = useValidation();
+  const { modal, setModal } = useModal();
   const form = useRef(null);
-
-  const changePassword = (newPassword) => {
-    const oldUser = users.find((user) => user.email === currentUser.email);
-
-    const changedPasswordUser = { ...oldUser, pass: Number(newPassword) };
-
-    const oldUsers = users.filter((user) => user.email !== currentUser.email);
-
-    const newUsers = [...oldUsers, changedPasswordUser];
-
-    setUsers(newUsers);
-    saveData("users", newUsers);
-  };
-
-  const validatePassword = () => {
-    const userInputs = new FormData(form.current);
-
-    const data = {
-      password: userInputs.get("password"),
-      newPassword: userInputs.get("newPassword"),
-    };
-
-    setError(false);
-    data.password === data.newPassword
-      ? changePassword(data.newPassword)
-      : null;
-    return data.password === data.newPassword;
-  };
 
   return (
     <div className="NewPassword">
@@ -47,7 +21,7 @@ const NewPassword = () => {
           <ModalConfirm
             setModal={setModal}
             title={"Password changed"}
-            message={"You changed your password correctly!"}
+            message={"You've changed your password correctly!"}
           />
         ) : null}
         {currentUser ? (
@@ -56,8 +30,11 @@ const NewPassword = () => {
             <h1 className="title">Create a new password</h1>
             <p className="subtitle">Enter a new password for your account</p>
             <form action="/" className="form" ref={form}>
-              <label htmlFor="password" className="label">
-                Password
+              <label
+                htmlFor="password"
+                className={error ? `label label--error` : `label`}
+              >
+                {error ? "Passwords don't match" : "New Password"}
               </label>
               <input
                 type="password"
@@ -69,8 +46,11 @@ const NewPassword = () => {
                 }`}
                 required
               />
-              <label htmlFor="new-password" className="label">
-                Confirm new Password
+              <label
+                htmlFor="new-password"
+                className={error ? `label label--error` : `label`}
+              >
+                {error ? "Passwords don't match" : "Confirm new password"}
               </label>
               <input
                 type="password"
@@ -87,7 +67,7 @@ const NewPassword = () => {
                 value="Confirm"
                 className="primary-button login-button"
                 onClick={() =>
-                  validatePassword() ? setModal(true) : setError(true)
+                  validatePassword(form) ? setModal(true) : setError(true)
                 }
               />
             </form>

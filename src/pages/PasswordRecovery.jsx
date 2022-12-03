@@ -1,26 +1,17 @@
 import React, { useRef, useState } from "react";
 import useGetUsers from "../hooks/useGetUsers";
+import useModal from "../hooks/useModal";
+import useValidation from "../hooks/useValidation";
 import "../styles/PasswordRecovery.scss";
 
 import logo from "../assets/logos/logo_yard_sale.svg";
 import ModalConfirm from "../components/ModalConfirm";
 
 const PasswordRecovery = () => {
-  const { users } = useGetUsers();
-  const [modal, setModal] = useState(false);
-  const [error, setError] = useState(false);
+  const { modal, setModal } = useModal();
+  const { validateEmail, error, setError } = useValidation();
+
   const form = useRef(null);
-
-  const validateEmail = () => {
-    const userInputs = new FormData(form.current);
-
-    const data = {
-      email: userInputs.get("email"),
-    };
-
-    setError(false);
-    return users.some((user) => user.email === data.email);
-  };
 
   return (
     <div className="PasswordRecovery">
@@ -29,7 +20,7 @@ const PasswordRecovery = () => {
           <ModalConfirm
             setModal={setModal}
             title={"Email sent!"}
-            message={"Check your inbox for further instructions"}
+            message={`Don't forget it next time! :)`}
           />
         ) : null}
         <img src={logo} alt="logo" className="logo" />
@@ -56,7 +47,9 @@ const PasswordRecovery = () => {
             type="button"
             value="Confirm"
             className="primary-button login-button"
-            onClick={() => (validateEmail() ? setModal(true) : setError(true))}
+            onClick={() =>
+              validateEmail(form) ? setModal(true) : setError(true)
+            }
           />
         </form>
       </div>

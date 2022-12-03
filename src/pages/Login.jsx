@@ -1,34 +1,14 @@
-import React, { useRef, useContext, useState } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import AppContext from "../context/AppContext";
+import useValidation from "../hooks/useValidation";
 import "../styles/Login.scss";
 
 import logo from "../assets/logos/logo_yard_sale.svg";
 
 const Login = () => {
   const form = useRef(null);
-  const [error, setError] = useState(false);
-  let navigate = useNavigate();
-  const { findUser, setCurrentUser } = useContext(AppContext);
 
-  const handleSubmit = () => {
-    const formData = new FormData(form.current);
-    const data = {
-      username: formData.get("email"),
-      password: Number(formData.get("password")),
-    };
-
-    setError(false);
-    // Check if user is registered
-    const correctUser = findUser(data.username, data.password);
-
-    // Guard clause
-    if (!correctUser) return setError(true);
-    // Continue logging
-    setCurrentUser(correctUser);
-    navigate("/");
-  };
+  const { error, setError, handleSubmit } = useValidation();
 
   return (
     <div className="Login">
@@ -66,7 +46,7 @@ const Login = () => {
           <button
             type="button"
             className="primary-button login-button"
-            onClick={handleSubmit}
+            onClick={() => handleSubmit(form)}
           >
             Log in
           </button>

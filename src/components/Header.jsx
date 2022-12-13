@@ -1,28 +1,26 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Menu from "./Menu";
+import useToggle from "../hooks/useToggle";
 import AppContext from "../context/AppContext";
+import { Link } from "react-router-dom";
 import MyOrder from "../containers/MyOrder";
 import MenuMobile from "./MenuMobile";
 import menu from "../assets/icons/icon_menu.svg";
 import logo from "../assets/logos/logo_yard_sale.svg";
 import shoppingCart from "../assets/icons/icon_shopping_cart.svg";
 import "../styles/Header.scss";
-import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [toggle, setToggle] = useState(false);
-  const [toggleMobile, setToggleMobile] = useState(false);
-  const [toggleOrders, setToggleOrders] = useState(false);
-
+  const {
+    toggle,
+    toggleOrders,
+    toggleMobile,
+    handleMenus,
+    handleToggle,
+    handleOrders,
+    handleMobile,
+  } = useToggle();
   const { state, updateProducts, currentUser } = useContext(AppContext);
-
-  const handleToggle = () => {
-    setToggle(!toggle);
-  };
-
-  const handleMobile = () => {
-    setToggleMobile(!toggleMobile);
-  };
 
   return (
     <nav>
@@ -32,8 +30,7 @@ const Header = () => {
           className="menu__logo"
           to="/"
           onClick={() => {
-            setToggleOrders(false);
-            setToggle(false);
+            handleMenus();
           }}
         >
           <img src={logo} alt="logo" className="nav-logo" />
@@ -44,8 +41,7 @@ const Header = () => {
             <button
               className="nav-button"
               onClick={() => {
-                setToggleOrders(false);
-                setToggle(false);
+                handleMenus();
                 updateProducts("");
               }}
             >
@@ -56,8 +52,7 @@ const Header = () => {
             <button
               className="nav-button"
               onClick={() => {
-                setToggleOrders(false);
-                setToggle(false);
+                handleMenus();
                 updateProducts("Clothes");
               }}
             >
@@ -68,8 +63,7 @@ const Header = () => {
             <button
               className="nav-button"
               onClick={() => {
-                setToggleOrders(false);
-                setToggle(false);
+                handleMenus();
                 updateProducts("Electronics");
               }}
             >
@@ -80,8 +74,7 @@ const Header = () => {
             <button
               className="nav-button"
               onClick={() => {
-                setToggleOrders(false);
-                setToggle(false);
+                handleMenus();
                 updateProducts("Furniture");
               }}
             >
@@ -92,8 +85,7 @@ const Header = () => {
             <button
               className="nav-button"
               onClick={() => {
-                setToggleOrders(false);
-                setToggle(false);
+                handleMenus();
                 updateProducts("Toys");
               }}
             >
@@ -104,8 +96,7 @@ const Header = () => {
             <button
               className="nav-button"
               onClick={() => {
-                setToggleOrders(false);
-                setToggle(false);
+                handleMenus();
                 updateProducts("Others");
               }}
             >
@@ -120,7 +111,6 @@ const Header = () => {
             {currentUser ? (
               <p
                 onClick={() => {
-                  setToggleOrders(false);
                   handleToggle();
                 }}
               >
@@ -133,8 +123,8 @@ const Header = () => {
           <li
             className="navbar-shopping-cart"
             onClick={() => {
-              setToggle(false);
-              setToggleOrders(!toggleOrders);
+              handleToggle();
+              handleOrders();
             }}
           >
             <img src={shoppingCart} alt="shopping cart" />
@@ -142,24 +132,17 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      {toggle && currentUser ? (
-        <Menu setToggle={setToggle} setToggleOrders={setToggleOrders} />
-      ) : null}
+      {toggle && currentUser ? <Menu handleMenus={handleMenus} /> : null}
 
       {toggleOrders ? (
         <MyOrder
-          toggleOrders={toggleOrders}
-          setToggle={setToggle}
-          setToggleOrders={setToggleOrders}
+          handleMenus={handleMenus}
+          handleOrders={handleOrders}
+          handleToggle={handleToggle}
         />
       ) : null}
 
-      {toggleMobile ? (
-        <MenuMobile
-          toggleMobile={toggleMobile}
-          setToggleMobile={setToggleMobile}
-        />
-      ) : null}
+      {toggleMobile ? <MenuMobile handleMobile={handleMobile} /> : null}
     </nav>
   );
 };

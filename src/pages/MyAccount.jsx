@@ -14,15 +14,15 @@ const MyAccount = () => {
             <h1 className="title">My account</h1>
             <form action="/" className="form">
               <div>
-                <label for="name" className="label">
+                <label htmlFor="name" className="label">
                   Name
                 </label>
                 <p className="value">{currentUser.name}</p>
-                <label for="email" className="label">
+                <label htmlFor="email" className="label">
                   Email
                 </label>
                 <p className="value">{currentUser.email}</p>
-                <label for="password" className="label">
+                <label htmlFor="password" className="label">
                   Password
                 </label>
                 <p className="value">*********</p>

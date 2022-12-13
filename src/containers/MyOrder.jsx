@@ -2,12 +2,11 @@ import React, { useContext } from "react";
 import OrderItem from "../components/OrderItem";
 import { Link } from "react-router-dom";
 import AppContext from "../context/AppContext";
-
 import "../styles/MyOrder.scss";
 
 import close from "../assets/icons/icon_close.png";
 
-const MyOrder = ({ setToggle, toggleOrders, setToggleOrders }) => {
+const MyOrder = ({ handleMenus, handleOrders }) => {
   const { state, sumTotal, currentUser } = useContext(AppContext);
 
   return (
@@ -17,7 +16,9 @@ const MyOrder = ({ setToggle, toggleOrders, setToggleOrders }) => {
         <img
           src={close}
           alt="close icon"
-          onClick={() => setToggleOrders(!toggleOrders)}
+          onClick={() => {
+            handleOrders();
+          }}
         />
       </div>
       <div className="my-order-content">
@@ -40,8 +41,7 @@ const MyOrder = ({ setToggle, toggleOrders, setToggleOrders }) => {
         <Link
           className="primary-button button-checkout"
           onClick={() => {
-            setToggleOrders(false);
-            setToggle(false);
+            handleMenus();
           }}
           to={currentUser ? "/checkout" : "/login"}
         >

@@ -4,17 +4,13 @@ import close from "../assets/icons/icon_close.png";
 import AppContext from "../context/AppContext";
 import "../styles/MenuMobile.scss";
 
-const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
+const MenuMobile = ({ handleMobile }) => {
   const { updateProducts, currentUser, setCurrentUser } =
     useContext(AppContext);
   return (
     <div className="MenuMobile">
       <figure>
-        <img
-          src={close}
-          alt="close"
-          onClick={() => setToggleMobile(!toggleMobile)}
-        />
+        <img src={close} alt="close" onClick={() => handleMobile(false)} />
       </figure>
 
       <ul>
@@ -22,7 +18,7 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
           <button
             className="nav-button"
             onClick={() => {
-              setToggleMobile(false);
+              handleMobile(false);
               updateProducts("");
             }}
           >
@@ -33,7 +29,7 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
           <button
             className="nav-button"
             onClick={() => {
-              setToggleMobile(false);
+              handleMobile(false);
               updateProducts("Clothes");
             }}
           >
@@ -44,7 +40,7 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
           <button
             className="nav-button"
             onClick={() => {
-              setToggleMobile(false);
+              handleMobile(false);
               updateProducts("Electronics");
             }}
           >
@@ -55,7 +51,7 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
           <button
             className="nav-button"
             onClick={() => {
-              setToggleMobile(false);
+              handleMobile(false);
               updateProducts("Furniture");
             }}
           >
@@ -66,7 +62,7 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
           <button
             className="nav-button"
             onClick={() => {
-              setToggleMobile(false);
+              handleMobile(false);
               updateProducts("Toys");
             }}
           >
@@ -77,7 +73,7 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
           <button
             className="nav-button"
             onClick={() => {
-              setToggleMobile(false);
+              handleMobile(false);
               updateProducts("Others");
             }}
           >
@@ -114,7 +110,7 @@ const MenuMobile = ({ toggleMobile, setToggleMobile }) => {
             className="sign-out"
             to="/login"
             onClick={() => {
-              setToggleMobile(false);
+              handleMobile(false);
               currentUser ? setCurrentUser(null) : null;
             }}
           >

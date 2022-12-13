@@ -14,6 +14,7 @@ const useGetProducts = (API) => {
 
     fetchData();
   }, []);
+
   return { loading, products };
 };
 

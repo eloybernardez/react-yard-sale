@@ -1,14 +1,36 @@
-import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import useValidation from "../hooks/useValidation";
+import AppContext from "../context/AppContext";
 import "../styles/Login.scss";
 
 import logo from "../assets/logos/logo_yard_sale.svg";
 
 const Login = () => {
   const form = useRef(null);
+  const { findUser, setCurrentUser } = useContext(AppContext);
+  const { error, setError } = useValidation();
+  let navigate = useNavigate();
 
-  const { error, setError, handleSubmit } = useValidation();
+  const handleSubmit = (form) => {
+    const formData = new FormData(form.current);
+
+    const data = {
+      username: formData.get("email"),
+      password: Number(formData.get("password")),
+    };
+
+    setError(false);
+    // Check if user is registered
+    const correctUser = findUser(data.username, data.password);
+
+    // Guard clause
+    if (!correctUser) return setError(true);
+    // Continue logging
+
+    setCurrentUser(correctUser);
+    navigate("/");
+  };
 
   return (
     <div className="Login">

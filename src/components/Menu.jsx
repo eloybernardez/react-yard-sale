@@ -4,7 +4,7 @@ import AppContext from "../context/AppContext";
 
 import "../styles/Menu.scss";
 
-const Menu = ({ setToggle, setToggleOrders }) => {
+const Menu = ({ handleMenus }) => {
   const { setCurrentUser } = useContext(AppContext);
   return (
     <div className="Menu">
@@ -14,8 +14,7 @@ const Menu = ({ setToggle, setToggleOrders }) => {
             className="title"
             to="/orders"
             onClick={() => {
-              setToggleOrders(false);
-              setToggle(false);
+              handleMenus();
             }}
           >
             My orders
@@ -25,8 +24,7 @@ const Menu = ({ setToggle, setToggleOrders }) => {
           <Link
             to="/account"
             onClick={() => {
-              setToggleOrders(false);
-              setToggle(false);
+              handleMenus();
             }}
           >
             My account
@@ -36,8 +34,7 @@ const Menu = ({ setToggle, setToggleOrders }) => {
           <Link
             to="/"
             onClick={() => {
-              setToggleOrders(false);
-              setToggle(false);
+              handleMenus();
               setCurrentUser(null);
             }}
           >

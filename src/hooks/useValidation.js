@@ -1,12 +1,10 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import AppContext from "../context/AppContext";
 
 const useValidation = () => {
-  const { saveData, users, setUsers, currentUser, setCurrentUser, findUser } =
+  const { saveData, users, setUsers, state, currentUser } =
     useContext(AppContext);
   const [error, setError] = useState(false);
-  let navigate = useNavigate();
 
   const validateEmail = (form) => {
     const userInputs = new FormData(form.current);
@@ -47,26 +45,38 @@ const useValidation = () => {
     return data.password === data.newPassword;
   };
 
-  const handleSubmit = (form) => {
-    const formData = new FormData(form.current);
-
+  const handleNewUser = (form) => {
+    const accountData = new FormData(form.current);
     const data = {
-      username: formData.get("email"),
-      password: Number(formData.get("password")),
+      name: accountData.get("name"),
+      email: String(accountData.get("email")),
+      pass: Number(accountData.get("pass")),
     };
 
-    setError(false);
-    // Check if user is registered
-    const correctUser = findUser(data.username, data.password);
+    const addNewUser = (name, email, pass) => {
+      const newUser = { name, email, pass, cart: [...state.cart] };
+      setUsers([...users, newUser]);
+      saveData("users", [...users, newUser]);
+    };
 
-    // Guard clause
-    if (!correctUser) return setError(true);
-    // Continue logging
-    setCurrentUser(correctUser);
-    navigate("/");
+    const isAlreadyRegistered = users.some((user) => user.email === data.email);
+
+    setError(false);
+    if (isAlreadyRegistered) {
+      setError(true);
+      return;
+    } else {
+      addNewUser(data.name, data.email, data.pass);
+    }
   };
 
-  return { error, setError, validateEmail, validatePassword, handleSubmit };
+  return {
+    error,
+    setError,
+    validateEmail,
+    validatePassword,
+    handleNewUser,
+  };
 };
 
 export default useValidation;

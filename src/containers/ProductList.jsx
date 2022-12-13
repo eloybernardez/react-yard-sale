@@ -1,11 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo, memo } from "react";
 import AppContext from "../context/AppContext";
 import ProductItem from "../components/ProductItem";
 import "../styles/ProductList.scss";
 
-const ProductList = () => {
+const ProductList = memo(function ProductList() {
   const { state, products } = useContext(AppContext);
-  const newProducts = state.products.length ? state.products : products;
+  const newProducts = useMemo(
+    () => (state.products.length ? state.products : products),
+    [state.products, products]
+  );
+
+  console.log("render");
 
   return (
     <section className="main-container">
@@ -23,6 +28,6 @@ const ProductList = () => {
       </div>
     </section>
   );
-};
+});
 
 export default ProductList;

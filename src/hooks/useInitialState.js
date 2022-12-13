@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import useGetProducts from "./useGetProducts";
 import useGetUsers from "./useGetUsers";
 
@@ -13,8 +14,8 @@ const useInitialState = () => {
   const { products, loading } = useGetProducts(API);
   const { users, setUsers, handleItems, saveData, findUser, getData } =
     useGetUsers();
-  const [state, setState] = useState(getData("cart", initialState));
   const [currentUser, setCurrentUser] = useState(null);
+  const [state, setState] = useState(getData("cart", initialState));
 
   const addToCart = (payload) => {
     const stateToSave = {
@@ -64,6 +65,17 @@ const useInitialState = () => {
       accumulator + currentValue.price;
     const sum = state.cart.reduce(reducer, 0);
     return sum;
+  };
+
+  const filteredProducts = () => {
+    const oldProducts = state.cart;
+
+    const stateToSave = {
+      ...state,
+      cart: state.cart.filter((product) => {
+        return product.id !== id;
+      }),
+    };
   };
 
   return {

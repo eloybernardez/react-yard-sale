@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, memo } from "react";
 import AppContext from "../context/AppContext";
 
 import "../styles/ProductItem.scss";
@@ -7,7 +7,7 @@ import addToCartImage from "../assets/icons/bt_add_to_cart.svg";
 import addedToCartImage from "../assets/icons/bt_added_to_cart.svg";
 import ProductInfo from "./ProductInfo";
 
-const ProductItem = ({ product }) => {
+const ProductItem = memo(function ProductItem({ product }) {
   const { addToCart, removeFromCartWithId } = useContext(AppContext);
   const [open, setOpen] = useState(false);
 
@@ -47,6 +47,6 @@ const ProductItem = ({ product }) => {
       ) : null}
     </div>
   );
-};
+});
 
 export default ProductItem;

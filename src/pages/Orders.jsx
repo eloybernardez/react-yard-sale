@@ -2,29 +2,36 @@ import React from "react";
 import { useContext } from "react";
 import AppContext from "../context/AppContext";
 import OrderItem from "../components/OrderItem";
+import NotLogged from "../components/NotLogged";
 import "../styles/Orders.scss";
 
 const Orders = () => {
-  const { currentUser, getData } = useContext(AppContext);
-  const email = currentUser?.email;
-  const users = getData("users");
-  const { cart } = users.find((user) => user.email === email);
+  const { currentUser } = useContext(AppContext);
 
   const date = new Date().toLocaleDateString("en-US");
   return (
     <div className="Orders">
       <div className="Orders-container">
-        <h1 className="title">Confirmed orders</h1>
-        <div className="Orders-content">
-          <p className="title">{date}</p>
-          {!currentUser.cart ? (
-            <p>No confirmed orders yet. Buy something 💪</p>
-          ) : (
-            cart.map((item, index) => (
-              <OrderItem product={item} indexValue={`ordered-item-${index}`} />
-            ))
-          )}
-        </div>
+        {currentUser ? (
+          <>
+            <h1 className="title">Confirmed orders</h1>
+            <div className="Orders-content">
+              <p className="title">{date}</p>
+              {!currentUser.cart ? (
+                <p>No confirmed orders yet. Buy something 💪</p>
+              ) : (
+                currentUser.cart.map((item, index) => (
+                  <OrderItem
+                    product={item}
+                    indexValue={`ordered-item-${index}`}
+                  />
+                ))
+              )}
+            </div>
+          </>
+        ) : (
+          <NotLogged />
+        )}
       </div>
     </div>
   );

@@ -67,16 +67,16 @@ const useInitialState = () => {
     return sum;
   };
 
-  const filteredProducts = () => {
-    const oldProducts = state.cart;
+  // const filteredProducts = () => {
+  //   const oldProducts = state.cart;
 
-    const stateToSave = {
-      ...state,
-      cart: state.cart.filter((product) => {
-        return product.id !== id;
-      }),
-    };
-  };
+  //   const stateToSave = {
+  //     ...state,
+  //     cart: state.cart.filter((product) => {
+  //       return product.id !== id;
+  //     }),
+  //   };
+  // };
 
   return {
     state,
@@ -88,6 +88,7 @@ const useInitialState = () => {
     removeFromCartWithId,
     sumTotal,
     users,
+    setState,
     setUsers,
     handleItems,
     saveData,

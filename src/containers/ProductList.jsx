@@ -10,8 +10,6 @@ const ProductList = memo(function ProductList() {
     [state.products, products]
   );
 
-  console.log("render");
-
   return (
     <section className="main-container">
       <div className="ProductList">

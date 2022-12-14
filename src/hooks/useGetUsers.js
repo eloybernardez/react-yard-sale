@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const initialUsers = [
   {
@@ -46,12 +46,15 @@ const useGetUsers = () => {
     const newUsers = users.filter(
       (user) => user.email !== findedUser.email && user.pass !== findedUser.pass
     );
-    setUsers([
+
+    const usersToStore = [
       ...newUsers,
       { ...findedUser, cart: [...findedUser.cart, ...items] },
-    ]);
+    ];
 
-    saveData("users", users);
+    setUsers(usersToStore);
+
+    saveData("users", usersToStore);
   };
 
   return { users, setUsers, findUser, handleItems, saveData, getData };

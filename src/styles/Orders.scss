@@ -14,12 +14,55 @@
 .Orders-container {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  width: 300px;
+  width: 400px;
+  background-color: var(--text-input-field);
+  margin-bottom: 24px;
+  margin-top: 57px;
+  border-radius: 8px;
+  padding: 0 24px;
 }
 
 .Orders-content {
   display: flex;
   flex-direction: column;
+  grid-row: 2/3;
+}
+
+.order {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: center;
+  background-color: var(--text-input-field);
+  margin-bottom: 24px;
+  border-radius: 8px;
+  padding: 0 24px;
+}
+.order p:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+}
+.order p span:nth-child(1) {
+  font-size: var(--md);
+  font-weight: bold;
+}
+.order p span:nth-child(2) {
+  font-size: var(--sm);
+  color: var(--very-light-pink);
+}
+.order p:nth-child(2) {
+  font-weight: bold;
+  text-align: center;
+}
+
+.order p:nth-child(2).order-price {
+  text-align: end;
+}
+
+.order-items {
+  display: grid;
+  grid-column: 1/3;
+  grid-template-columns: 1fr;
 }
 
 @media screen and (max-width: 400px) {

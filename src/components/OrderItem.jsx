@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, memo } from "react";
 import AppContext from "../context/AppContext";
 import "../styles/OrderItem.scss";
 
 import iconClose from "../assets/icons/icon_close.png";
 
-const OrderItem = ({ product, indexValue }) => {
+const OrderItem = memo(function OrderItem({ product, indexValue }) {
   const { removeFromCart } = useContext(AppContext);
 
   const handleRemove = (itemIndex) => {
@@ -25,6 +25,6 @@ const OrderItem = ({ product, indexValue }) => {
       />
     </div>
   );
-};
+});
 
 export default OrderItem;

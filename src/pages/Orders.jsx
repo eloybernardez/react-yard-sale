@@ -12,23 +12,28 @@ const Orders = () => {
   return (
     <div className="Orders">
       <div className="Orders-container">
+        <h1 className="title">Confirmed orders</h1>
         {currentUser ? (
-          <>
-            <h1 className="title">Confirmed orders</h1>
+          <div className="order">
+            <p>
+              <span>{date}</span>
+              <span>{currentUser?.cart.length} articles</span>
+            </p>
+
             <div className="Orders-content">
-              <p className="title">{date}</p>
-              {!currentUser.cart ? (
+              {!currentUser.cart.length ? (
                 <p>No confirmed orders yet. Buy something 💪</p>
               ) : (
                 currentUser.cart.map((item, index) => (
                   <OrderItem
                     product={item}
                     indexValue={`ordered-item-${index}`}
+                    key={`ordered-item-${index}`}
                   />
                 ))
               )}
             </div>
-          </>
+          </div>
         ) : (
           <NotLogged />
         )}

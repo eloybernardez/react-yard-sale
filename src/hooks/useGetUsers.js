@@ -41,19 +41,24 @@ const useGetUsers = () => {
   };
 
   const handleItems = (user, items) => {
+    // find logged user
     const findedUser = findUser(user.email, user.pass);
 
+    // get the rest of users
     const newUsers = users.filter(
       (user) => user.email !== findedUser.email && user.pass !== findedUser.pass
     );
 
+    // Updated users
     const usersToStore = [
       ...newUsers,
       { ...findedUser, cart: [...findedUser.cart, ...items] },
     ];
 
+    // Update users
     setUsers(usersToStore);
 
+    // Save users in Local Storage
     saveData("users", usersToStore);
   };
 

@@ -6,9 +6,10 @@
   display: grid;
   place-items: center;
 }
-.title {
+
+.Orders > .title {
   font-size: var(--lg);
-  margin-bottom: 40px;
+  margin-top: 70px;
 }
 
 .Orders-container {
@@ -17,9 +18,12 @@
   width: 400px;
   background-color: var(--text-input-field);
   margin-bottom: 24px;
-  margin-top: 57px;
   border-radius: 8px;
   padding: 0 24px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -60%);
 }
 
 .Orders-content {

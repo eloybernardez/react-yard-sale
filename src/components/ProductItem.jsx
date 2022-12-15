@@ -8,18 +8,8 @@ import addedToCartImage from "../assets/icons/bt_added_to_cart.svg";
 import ProductInfo from "./ProductInfo";
 
 const ProductItem = memo(function ProductItem({ product }) {
-  const { addToCart, removeFromCartWithId } = useContext(AppContext);
+  const { handleCart } = useContext(AppContext);
   const [open, setOpen] = useState(false);
-
-  const handleClick = (item) => {
-    if (!item.cart) {
-      addToCart(item);
-      item.cart = true;
-    } else {
-      removeFromCartWithId(item.id);
-      item.cart = false;
-    }
-  };
 
   const handleClose = () => setOpen((prevState) => !prevState);
 
@@ -31,7 +21,7 @@ const ProductItem = memo(function ProductItem({ product }) {
           <p>${product.price}</p>
           <p>{product.title}</p>
         </div>
-        <figure onClick={() => handleClick(product)}>
+        <figure onClick={() => handleCart(product)}>
           <img
             src={product.cart ? addedToCartImage : addToCartImage}
             alt="add to cart"
@@ -40,7 +30,7 @@ const ProductItem = memo(function ProductItem({ product }) {
       </div>
       {open ? (
         <ProductInfo
-          handleClick={handleClick}
+          handleCart={handleCart}
           product={product}
           handleClose={handleClose}
         />

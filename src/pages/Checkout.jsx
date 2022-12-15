@@ -6,8 +6,7 @@ import OrderItem from "../components/OrderItem";
 import "../styles/Checkout.scss";
 
 const Checkout = () => {
-  const { state, setState, sumTotal, handleItems, currentUser } =
-    useContext(AppContext);
+  const { state, confirmOrder, sumTotal, currentUser } = useContext(AppContext);
   const { modal, setModal } = useModal();
   const date = new Date().toLocaleDateString("en-US");
 
@@ -44,17 +43,19 @@ const Checkout = () => {
                 <p>There are no products in your cart</p>
               )}
             </div>
-            <button
-              className="primary-button button-checkout"
-              type="button"
-              onClick={() => {
-                handleItems(currentUser, state.cart);
-                setState({ ...state, cart: [] });
-                setModal(true);
-              }}
-            >
-              Buy
-            </button>
+            {state.cart.length ? (
+              <button
+                className="primary-button button-checkout"
+                type="button"
+                onClick={() => {
+                  // Confirm order with the logged user and empty the cart
+                  confirmOrder(currentUser, state.cart);
+                  setModal(true);
+                }}
+              >
+                Buy
+              </button>
+            ) : null}
           </div>
         </div>
       </div>

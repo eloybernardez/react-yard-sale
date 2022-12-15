@@ -6,7 +6,7 @@ import close from "../assets/icons/icon_close.png";
 import addedToCart from "../assets/icons/bt_added_to_cart.svg";
 import addToCart from "../assets/icons/bt_add_to_cart.svg";
 
-const ProductInfo = ({ product, handleClose, handleClick }) => {
+const ProductInfo = ({ product, handleClose, handleCart }) => {
   return ReactDOM.createPortal(
     <div className="Modal">
       <div className="ProductInfo">
@@ -27,7 +27,7 @@ const ProductInfo = ({ product, handleClose, handleClick }) => {
             className={`add-to-cart-button ${
               product.cart ? `secondary-button--cart` : `primary-button--cart`
             }`}
-            onClick={() => handleClick(product)}
+            onClick={() => handleCart(product)}
           >
             <img
               src={!product.cart ? addToCart : addedToCart}

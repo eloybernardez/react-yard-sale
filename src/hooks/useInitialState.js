@@ -27,6 +27,16 @@ const useInitialState = () => {
     saveData("cart", stateToSave);
   };
 
+  const handleCart = (item) => {
+    if (!item.cart) {
+      addToCart(item);
+      item.cart = true;
+    } else {
+      removeFromCartWithId(item.id);
+      item.cart = false;
+    }
+  };
+
   const removeFromCart = (key) => {
     const stateToSave = {
       ...state,
@@ -67,16 +77,16 @@ const useInitialState = () => {
     return sum;
   };
 
-  // const filteredProducts = () => {
-  //   const oldProducts = state.cart;
+  const confirmOrder = (user, items) => {
+    // Save logged user items
+    handleItems(user, items);
 
-  //   const stateToSave = {
-  //     ...state,
-  //     cart: state.cart.filter((product) => {
-  //       return product.id !== id;
-  //     }),
-  //   };
-  // };
+    const emptiedCart = { ...state, cart: [] };
+
+    // Clean cart of buyed items
+    setState(emptiedCart);
+    saveData("cart", emptiedCart);
+  };
 
   return {
     state,
@@ -96,6 +106,8 @@ const useInitialState = () => {
     currentUser,
     setCurrentUser,
     getData,
+    handleCart,
+    confirmOrder,
   };
 };
 

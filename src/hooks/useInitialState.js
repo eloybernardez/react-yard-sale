@@ -81,11 +81,19 @@ const useInitialState = () => {
     // Save logged user items
     handleItems(user, items);
 
-    const emptiedCart = { ...state, cart: [] };
+    // Eliminate buyed products
+    const newInventory = products.map((item) => {
+      return { ...item, cart: false };
+    });
+
+    const emptiedCart = { ...state, cart: [], products: newInventory };
 
     // Clean cart of buyed items
     setState(emptiedCart);
     saveData("cart", emptiedCart);
+
+    // Update logged user
+    setCurrentUser(user);
   };
 
   return {

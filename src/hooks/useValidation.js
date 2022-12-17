@@ -64,7 +64,6 @@ const useValidation = () => {
     setError(false);
     if (isAlreadyRegistered) {
       setError(true);
-      return;
     } else {
       addNewUser(data.name, data.email, data.pass);
     }

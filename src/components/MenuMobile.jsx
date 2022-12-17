@@ -85,17 +85,17 @@ const MenuMobile = ({ handleMobile }) => {
         <li>
           <Link
             className={`title ${!currentUser ? "disabled" : ""}`}
-            to={`${currentUser ? "/orders" : "/login"}`}
-            onClick={() => setToggleMobile(false)}
+            to={currentUser ? "/orders" : "/login"}
+            onClick={() => handleMobile(false)}
           >
             My orders
           </Link>
         </li>
         <li>
           <Link
-            to={`${currentUser ? "/account" : "/login"}`}
+            to={currentUser ? "/account" : "/login"}
             className={`title ${!currentUser ? "disabled" : ""}`}
-            onClick={() => setToggleMobile(false)}
+            onClick={() => handleMobile(false)}
           >
             My Account
           </Link>

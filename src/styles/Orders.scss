@@ -71,6 +71,11 @@
 
 @media screen and (max-width: 400px) {
   .Orders-container {
-    width: 250px;
+    top: 20%;
+    width: 80%;
+    transform: translate(-50%, 0);
+  }
+  .Orders > .title {
+    margin-top: 0;
   }
 }

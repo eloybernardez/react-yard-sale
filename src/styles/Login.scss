@@ -49,6 +49,10 @@
   margin-bottom: 22px;
 }
 
+.input:hover {
+  outline: 2px solid var(--hospital-green);
+}
+
 .input.input--error {
   outline: 1px solid var(--red);
 }
@@ -85,6 +89,7 @@
   font-size: var(--md);
   font-weight: bold;
   height: 50px;
+  transition: all 0.6s;
 }
 
 .secondary-button:hover {

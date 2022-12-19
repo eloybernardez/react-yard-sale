@@ -15,7 +15,15 @@ const useInitialState = () => {
   const { users, setUsers, handleItems, saveData, findUser, getData } =
     useGetUsers();
   const [currentUser, setCurrentUser] = useState(null);
+  const [isAdded, setIsAdded] = useState(false);
   const [state, setState] = useState(getData("cart", initialState));
+
+  const handleAdded = () => {
+    setIsAdded(true);
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 1500);
+  };
 
   const addToCart = (payload) => {
     const stateToSave = {
@@ -35,6 +43,7 @@ const useInitialState = () => {
       removeFromCartWithId(item.id);
       item.cart = false;
     }
+    handleAdded();
   };
 
   const removeFromCart = (key) => {
@@ -116,6 +125,7 @@ const useInitialState = () => {
     getData,
     handleCart,
     confirmOrder,
+    isAdded,
   };
 };
 

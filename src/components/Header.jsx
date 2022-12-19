@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Menu from "./Menu";
 import useToggle from "../hooks/useToggle";
 import AppContext from "../context/AppContext";
@@ -20,7 +20,9 @@ const Header = () => {
     handleOrders,
     handleMobile,
   } = useToggle();
-  const { state, updateProducts, currentUser } = useContext(AppContext);
+
+  const { state, updateProducts, currentUser, isAdded } =
+    useContext(AppContext);
 
   return (
     <nav>
@@ -128,7 +130,13 @@ const Header = () => {
             }}
           >
             <img src={shoppingCart} alt="shopping cart" />
-            {state.cart?.length > 0 ? <div>{state.cart?.length}</div> : null}
+            {state.cart?.length > 0 ? (
+              <div
+                className={`${isAdded ? "navbar-shopping-cart--active" : null}`}
+              >
+                {state.cart?.length}
+              </div>
+            ) : null}
           </li>
         </ul>
       </div>

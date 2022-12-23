@@ -4,7 +4,7 @@ import "../styles/OrderItem.scss";
 
 import iconClose from "../assets/icons/icon_close.png";
 
-const OrderItem = memo(function OrderItem({ product, indexValue }) {
+const OrderItem = memo(function OrderItem({ product, indexValue, isBought }) {
   const { removeFromCart } = useContext(AppContext);
 
   const handleRemove = (itemIndex) => {
@@ -18,11 +18,13 @@ const OrderItem = memo(function OrderItem({ product, indexValue }) {
       </figure>
       <p>{product.title}</p>
       <p>${product.price}</p>
-      <img
-        src={iconClose}
-        alt="close"
-        onClick={() => handleRemove(indexValue)}
-      />
+      {isBought ? null : (
+        <img
+          src={iconClose}
+          alt="close"
+          onClick={() => handleRemove(indexValue)}
+        />
+      )}
     </div>
   );
 });

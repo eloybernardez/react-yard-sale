@@ -8,6 +8,7 @@ const Orders = () => {
   const { currentUser } = useContext(AppContext);
 
   const date = new Date().toLocaleDateString("en-US");
+  // console.log(currentUser.cart);
   return (
     <div className="Orders">
       <div className="Orders-container">
@@ -26,6 +27,7 @@ const Orders = () => {
                 ) : (
                   currentUser.cart.map((item, index) => (
                     <OrderItem
+                      isBought={true}
                       product={item}
                       indexValue={`ordered-item-${index}`}
                       key={`ordered-item-${index}`}

@@ -9,6 +9,7 @@ nav {
   width: 97%;
   background-color: white;
   top: 0;
+  z-index: 1;
 }
 .menu {
   display: none;
@@ -115,11 +116,14 @@ nav {
   justify-content: center;
   align-items: center;
 }
-@media (max-width: 640px) {
+
+@media (max-width: 768px) {
   nav {
     width: 90%;
     margin-bottom: 10px;
-    z-index: 1;
+  }
+  .navbar-shopping-cart div {
+    padding-right: 4px;
   }
 
   .menu {

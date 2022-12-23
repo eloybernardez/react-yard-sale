@@ -3,7 +3,7 @@ import { useState } from "react";
 import useGetProducts from "./useGetProducts";
 import useGetUsers from "./useGetUsers";
 
-const API = "https://api.escuelajs.co/api/v1/products";
+const API = "https://api.escuelajs.co/api/v1/products?limit=200";
 
 const initialState = {
   products: [],

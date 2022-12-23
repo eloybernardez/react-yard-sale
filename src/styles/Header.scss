@@ -1,12 +1,13 @@
 @import "vars";
 
 nav {
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   padding: 0 24px;
   border-bottom: 1px solid var(--very-light-pink);
   position: fixed;
-  width: 97%;
+  width: 100%;
   background-color: white;
   top: 0;
   z-index: 1;
@@ -117,9 +118,15 @@ nav {
   align-items: center;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 640px) {
+  header {
+    width: 100%;
+  }
+
   nav {
-    width: 90%;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
     margin-bottom: 10px;
   }
   .navbar-shopping-cart div {

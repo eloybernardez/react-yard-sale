@@ -25,133 +25,137 @@ const Header = () => {
     useContext(AppContext);
 
   return (
-    <nav>
-      <img src={menu} alt="menu" className="menu" onClick={handleMobile} />
-      <div className="navbar-left">
-        <Link
-          className="menu__logo"
-          to="/"
-          onClick={() => {
-            handleMenus();
-          }}
-        >
-          <img src={logo} alt="logo" className="nav-logo" />
-        </Link>
-
-        <ul>
-          <li>
-            <button
-              className="nav-button"
-              onClick={() => {
-                handleMenus();
-                updateProducts("");
-              }}
-            >
-              All
-            </button>
-          </li>
-          <li>
-            <button
-              className="nav-button"
-              onClick={() => {
-                handleMenus();
-                updateProducts("Clothes");
-              }}
-            >
-              Clothes
-            </button>
-          </li>
-          <li>
-            <button
-              className="nav-button"
-              onClick={() => {
-                handleMenus();
-                updateProducts("Electronics");
-              }}
-            >
-              Electronics
-            </button>
-          </li>
-          <li>
-            <button
-              className="nav-button"
-              onClick={() => {
-                handleMenus();
-                updateProducts("Furniture");
-              }}
-            >
-              Furnitures
-            </button>
-          </li>
-          <li>
-            <button
-              className="nav-button"
-              onClick={() => {
-                handleMenus();
-                updateProducts("Toys");
-              }}
-            >
-              Toys
-            </button>
-          </li>
-          <li>
-            <button
-              className="nav-button"
-              onClick={() => {
-                handleMenus();
-                updateProducts("Others");
-              }}
-            >
-              Others
-            </button>
-          </li>
-        </ul>
-      </div>
-      <div className="navbar-right">
-        <ul>
-          <li className="navbar-email">
-            {currentUser ? (
-              <p
-                onClick={() => {
-                  handleToggle();
-                }}
-              >
-                {currentUser.email}
-              </p>
-            ) : (
-              <Link to="/login">Login</Link>
-            )}
-          </li>
-          <li
-            className="navbar-shopping-cart"
+    <header>
+      <nav>
+        <img src={menu} alt="menu" className="menu" onClick={handleMobile} />
+        <div className="navbar-left">
+          <Link
+            className="menu__logo"
+            to="/"
             onClick={() => {
-              handleToggle();
-              handleOrders();
+              handleMenus();
             }}
           >
-            <img src={shoppingCart} alt="shopping cart" />
-            {state.cart?.length > 0 ? (
-              <div
-                className={`${isAdded ? "navbar-shopping-cart--active" : null}`}
+            <img src={logo} alt="logo" className="nav-logo" />
+          </Link>
+
+          <ul>
+            <li>
+              <button
+                className="nav-button"
+                onClick={() => {
+                  handleMenus();
+                  updateProducts("");
+                }}
               >
-                {state.cart?.length}
-              </div>
-            ) : null}
-          </li>
-        </ul>
-      </div>
-      {toggle && currentUser ? <Menu handleMenus={handleMenus} /> : null}
+                All
+              </button>
+            </li>
+            <li>
+              <button
+                className="nav-button"
+                onClick={() => {
+                  handleMenus();
+                  updateProducts("Clothes");
+                }}
+              >
+                Clothes
+              </button>
+            </li>
+            <li>
+              <button
+                className="nav-button"
+                onClick={() => {
+                  handleMenus();
+                  updateProducts("Electronics");
+                }}
+              >
+                Electronics
+              </button>
+            </li>
+            <li>
+              <button
+                className="nav-button"
+                onClick={() => {
+                  handleMenus();
+                  updateProducts("Furniture");
+                }}
+              >
+                Furnitures
+              </button>
+            </li>
+            <li>
+              <button
+                className="nav-button"
+                onClick={() => {
+                  handleMenus();
+                  updateProducts("Toys");
+                }}
+              >
+                Toys
+              </button>
+            </li>
+            <li>
+              <button
+                className="nav-button"
+                onClick={() => {
+                  handleMenus();
+                  updateProducts("Others");
+                }}
+              >
+                Others
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div className="navbar-right">
+          <ul>
+            <li className="navbar-email">
+              {currentUser ? (
+                <p
+                  onClick={() => {
+                    handleToggle();
+                  }}
+                >
+                  {currentUser.email}
+                </p>
+              ) : (
+                <Link to="/login">Login</Link>
+              )}
+            </li>
+            <li
+              className="navbar-shopping-cart"
+              onClick={() => {
+                handleToggle();
+                handleOrders();
+              }}
+            >
+              <img src={shoppingCart} alt="shopping cart" />
+              {state.cart?.length > 0 ? (
+                <div
+                  className={`${
+                    isAdded ? "navbar-shopping-cart--active" : null
+                  }`}
+                >
+                  {state.cart?.length}
+                </div>
+              ) : null}
+            </li>
+          </ul>
+        </div>
+        {toggle && currentUser ? <Menu handleMenus={handleMenus} /> : null}
 
-      {toggleOrders ? (
-        <MyOrder
-          handleMenus={handleMenus}
-          handleOrders={handleOrders}
-          handleToggle={handleToggle}
-        />
-      ) : null}
+        {toggleOrders ? (
+          <MyOrder
+            handleMenus={handleMenus}
+            handleOrders={handleOrders}
+            handleToggle={handleToggle}
+          />
+        ) : null}
 
-      {toggleMobile ? <MenuMobile handleMobile={handleMobile} /> : null}
-    </nav>
+        {toggleMobile ? <MenuMobile handleMobile={handleMobile} /> : null}
+      </nav>
+    </header>
   );
 };
 

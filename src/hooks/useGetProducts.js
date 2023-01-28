@@ -7,11 +7,14 @@ const useGetProducts = (API) => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios(API);
-      setLoading(false);
-      setProducts(response.data);
+      try {
+        const response = await axios(API);
+        setLoading(false);
+        setProducts(response.data);
+      } catch (error) {
+        console.error(error.message);
+      }
     }
-
     fetchData();
   }, []);
 

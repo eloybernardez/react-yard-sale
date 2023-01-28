@@ -8,7 +8,7 @@ const Orders = () => {
   const { currentUser } = useContext(AppContext);
 
   const date = new Date().toLocaleDateString("en-US");
-  // console.log(currentUser.cart);
+
   return (
     <div className="Orders">
       <div className="Orders-container">

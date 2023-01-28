@@ -1,0 +1,27 @@
+@mixin primary-btn(
+  $backgroud-color: var(--hospital-green),
+  $color: var(--white)
+) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  height: 50px;
+  background-color: $backgroud-color;
+  border: none;
+  border-radius: 8px;
+  color: $color;
+  text-decoration: none;
+  padding: 8px 10px;
+  width: 100%;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: transparent;
+    color: var(--hospital-green);
+    outline: 1px solid var(--hospital-green);
+  }
+}

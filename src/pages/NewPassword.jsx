@@ -2,11 +2,10 @@ import React, { useContext, useRef } from "react";
 import ModalConfirm from "../components/ModalConfirm";
 import useModal from "../hooks/useModal";
 import useValidation from "../hooks/useValidation";
-import "../styles/NewPassword.scss";
-
-import logo from "../assets/logos/logo_yard_sale.svg";
-import AppContext from "../context/AppContext";
 import NotLogged from "../components/NotLogged";
+import AppContext from "../context/AppContext";
+import logo from "../assets/logos/logo_yard_sale.svg";
+import "../styles/NewPassword.scss";
 
 const NewPassword = () => {
   const { currentUser } = useContext(AppContext);

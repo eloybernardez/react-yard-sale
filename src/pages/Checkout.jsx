@@ -3,16 +3,17 @@ import AppContext from "../context/AppContext";
 import useModal from "../hooks/useModal";
 import ModalConfirm from "../components/ModalConfirm";
 import OrderItem from "../components/OrderItem";
+import CheckoutButton from "../components/CheckoutButton";
 import "../styles/Checkout.scss";
 
 const Checkout = () => {
-  const { state, confirmOrder, sumTotal, currentUser } = useContext(AppContext);
+  const { state, sumTotal } = useContext(AppContext);
   const { modal, setModal } = useModal();
   const date = new Date().toLocaleDateString("en-US");
 
   return (
     <div className="Checkout">
-      <div className="Checkout-container">
+      <div className="Checkout__container">
         {modal ? (
           <ModalConfirm
             setModal={setModal}
@@ -20,15 +21,15 @@ const Checkout = () => {
             message="Your order will arrive... eventually 📦"
           />
         ) : null}
-        <h1 className="title">My order</h1>
-        <div className="Checkout-content">
-          <div className="order">
+        <h1 className="Checkout__title">My order</h1>
+        <div className="Checkout__content">
+          <div className="Checkout__content__order">
             <p>
               <span>{date}</span>
               <span>{state.cart.length} articles</span>
             </p>
-            <p className="order-price">${sumTotal()}</p>
-            <div className="order-items">
+            <p className="price">${sumTotal()}</p>
+            <div className="Checkout__content__order__items">
               {state.cart.length > 0 ? (
                 state.cart.map((product, index) => {
                   return (
@@ -43,19 +44,7 @@ const Checkout = () => {
                 <p>There are no products in your cart</p>
               )}
             </div>
-            {state.cart.length ? (
-              <button
-                className="primary-button button-checkout"
-                type="button"
-                onClick={() => {
-                  // Confirm order with the logged user and empty the cart
-                  confirmOrder(currentUser, state.cart);
-                  setModal(true);
-                }}
-              >
-                Buy
-              </button>
-            ) : null}
+            {state.cart.length ? <CheckoutButton setModal={setModal} /> : null}
           </div>
         </div>
       </div>

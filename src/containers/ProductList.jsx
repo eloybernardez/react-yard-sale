@@ -11,7 +11,7 @@ const ProductList = memo(function ProductList() {
   );
 
   return (
-    <section className="main-container">
+    <section>
       <div className="ProductList">
         {newProducts.map((product, index) => {
           return (

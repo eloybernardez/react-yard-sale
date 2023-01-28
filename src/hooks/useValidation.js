@@ -1,10 +1,19 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import AppContext from "../context/AppContext";
 
 const useValidation = () => {
-  const { saveData, users, setUsers, state, currentUser } =
-    useContext(AppContext);
+  const {
+    saveData,
+    users,
+    setUsers,
+    findUser,
+    state,
+    currentUser,
+    setCurrentUser,
+  } = useContext(AppContext);
   const [error, setError] = useState(false);
+  let navigate = useNavigate();
 
   const validateEmail = (form) => {
     const userInputs = new FormData(form.current);
@@ -45,7 +54,27 @@ const useValidation = () => {
     return data.password === data.newPassword;
   };
 
-  const handleNewUser = (form) => {
+  const handleLogin = async (form) => {
+    const formData = new FormData(form.current);
+
+    const data = {
+      username: formData.get("email"),
+      password: Number(formData.get("password")),
+    };
+
+    setError(false);
+    // Check if user is registered
+    const correctUser = findUser(data.username, data.password);
+
+    // Guard clause
+    if (!correctUser) return setError(true);
+
+    // Continue logging
+    setTimeout(() => setCurrentUser(correctUser), 1000);
+    navigate("/");
+  };
+
+  const handleNewUser = async (form) => {
     const accountData = new FormData(form.current);
     const data = {
       name: accountData.get("name"),
@@ -65,7 +94,7 @@ const useValidation = () => {
     if (isAlreadyRegistered) {
       setError(true);
     } else {
-      addNewUser(data.name, data.email, data.pass);
+      setTimeout(() => addNewUser(data.name, data.email, data.pass), 1000);
     }
   };
 
@@ -75,6 +104,7 @@ const useValidation = () => {
     validateEmail,
     validatePassword,
     handleNewUser,
+    handleLogin,
   };
 };
 

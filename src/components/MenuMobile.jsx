@@ -1,105 +1,33 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import close from "../assets/icons/icon_close.png";
 import AppContext from "../context/AppContext";
+import NavButton from "./NavButton";
+import MobileLink from "./MobileLink";
+import CloseIcon from "./CloseIcon";
 import "../styles/MenuMobile.scss";
 
 const MenuMobile = ({ handleMobile }) => {
-  const { updateProducts, currentUser, setCurrentUser } =
-    useContext(AppContext);
+  const { currentUser, setCurrentUser } = useContext(AppContext);
   return (
     <div className="MenuMobile">
-      <figure>
-        <img src={close} alt="close" onClick={() => handleMobile(false)} />
-      </figure>
+      <CloseIcon handleClose={handleMobile} />
 
       <ul>
-        <li>
-          <button
-            className="nav-button"
-            onClick={() => {
-              handleMobile(false);
-              updateProducts("");
-            }}
-          >
-            All
-          </button>
-        </li>
-        <li>
-          <button
-            className="nav-button"
-            onClick={() => {
-              handleMobile(false);
-              updateProducts("Clothes");
-            }}
-          >
-            Clothes
-          </button>
-        </li>
-        <li>
-          <button
-            className="nav-button"
-            onClick={() => {
-              handleMobile(false);
-              updateProducts("Electronics");
-            }}
-          >
-            Electronics
-          </button>
-        </li>
-        <li>
-          <button
-            className="nav-button"
-            onClick={() => {
-              handleMobile(false);
-              updateProducts("Furniture");
-            }}
-          >
-            Furnitures
-          </button>
-        </li>
-        <li>
-          <button
-            className="nav-button"
-            onClick={() => {
-              handleMobile(false);
-              updateProducts("Toys");
-            }}
-          >
-            Toys
-          </button>
-        </li>
-        <li>
-          <button
-            className="nav-button"
-            onClick={() => {
-              handleMobile(false);
-              updateProducts("Others");
-            }}
-          >
-            Others
-          </button>
-        </li>
+        <NavButton handleToggle={handleMobile} />
+        {["Clothes", "Electronics", "Furniture", "Toys", "Others"].map(
+          (type) => (
+            <NavButton
+              key={`MenuMobile-${type}`}
+              name={type}
+              typeOfProduct={type}
+              handleToggle={handleMobile}
+            />
+          )
+        )}
       </ul>
       <ul>
-        <li>
-          <Link
-            className={`title ${!currentUser ? "disabled" : ""}`}
-            to={currentUser ? "/orders" : "/login"}
-            onClick={() => handleMobile(false)}
-          >
-            My orders
-          </Link>
-        </li>
-        <li>
-          <Link
-            to={currentUser ? "/account" : "/login"}
-            className={`title ${!currentUser ? "disabled" : ""}`}
-            onClick={() => handleMobile(false)}
-          >
-            My Account
-          </Link>
-        </li>
+        <MobileLink name="orders" handleMobile={handleMobile} />
+        <MobileLink name="account" handleMobile={handleMobile} />
       </ul>
       <ul>
         <li>

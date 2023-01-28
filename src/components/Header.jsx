@@ -4,6 +4,7 @@ import useToggle from "../hooks/useToggle";
 import AppContext from "../context/AppContext";
 import { Link } from "react-router-dom";
 import MyOrder from "../containers/MyOrder";
+import NavButton from "./NavButton";
 import MenuMobile from "./MenuMobile";
 import menu from "../assets/icons/icon_menu.svg";
 import logo from "../assets/logos/logo_yard_sale.svg";
@@ -21,94 +22,37 @@ const Header = () => {
     handleMobile,
   } = useToggle();
 
-  const { state, updateProducts, currentUser, isAdded } =
-    useContext(AppContext);
+  const { state, currentUser, isAdded } = useContext(AppContext);
 
   return (
     <header>
       <nav>
         <img src={menu} alt="menu" className="menu" onClick={handleMobile} />
-        <div className="navbar-left">
+        <div className="navbar__left">
           <Link
-            className="menu__logo"
+            className="navbar-logo"
             to="/"
             onClick={() => {
               handleMenus();
             }}
           >
-            <img src={logo} alt="logo" className="nav-logo" />
+            <img src={logo} alt="logo" className="navbar-logo__img" />
           </Link>
 
           <ul>
-            <li>
-              <button
-                className="nav-button"
-                onClick={() => {
-                  handleMenus();
-                  updateProducts("");
-                }}
-              >
-                All
-              </button>
-            </li>
-            <li>
-              <button
-                className="nav-button"
-                onClick={() => {
-                  handleMenus();
-                  updateProducts("Clothes");
-                }}
-              >
-                Clothes
-              </button>
-            </li>
-            <li>
-              <button
-                className="nav-button"
-                onClick={() => {
-                  handleMenus();
-                  updateProducts("Electronics");
-                }}
-              >
-                Electronics
-              </button>
-            </li>
-            <li>
-              <button
-                className="nav-button"
-                onClick={() => {
-                  handleMenus();
-                  updateProducts("Furniture");
-                }}
-              >
-                Furnitures
-              </button>
-            </li>
-            <li>
-              <button
-                className="nav-button"
-                onClick={() => {
-                  handleMenus();
-                  updateProducts("Toys");
-                }}
-              >
-                Toys
-              </button>
-            </li>
-            <li>
-              <button
-                className="nav-button"
-                onClick={() => {
-                  handleMenus();
-                  updateProducts("Others");
-                }}
-              >
-                Others
-              </button>
-            </li>
+            <NavButton handleToggle={handleMenus} />
+            {["Clothes", "Electronics", "Furniture", "Toys", "Others"].map(
+              (product) => (
+                <NavButton
+                  name={product}
+                  typeOfProduct={product}
+                  handleToggle={handleMenus}
+                />
+              )
+            )}
           </ul>
         </div>
-        <div className="navbar-right">
+        <div className="navbar__right">
           <ul>
             <li className="navbar-email">
               {currentUser ? (

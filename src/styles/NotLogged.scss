@@ -1,47 +1,30 @@
+@import "buttons";
+
 .logged-out__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--text-input-field);
-}
 
-.logged-out__container h2 {
-  text-align: center;
-  margin: 16px 0;
-}
+  h2 {
+    text-align: center;
+    margin: 16px 0;
+  }
 
-.logged-out__container p {
-  text-align: center;
-  margin: 16px 0;
-}
+  p {
+    text-align: center;
+    margin: 16px 0;
+  }
 
-.logged-out__container a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 50px;
-  background-color: var(--hospital-green);
-  border-radius: 8px;
-  color: var(--white);
-  text-decoration: none;
-  padding: 8px 10px;
-  width: 90%;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.logged-out__container a:hover {
-  background-color: transparent;
-  color: var(--hospital-green);
-  outline: 1px solid var(--hospital-green);
-}
-
-.logged-out__container img {
-  width: 70%;
-  height: 70%;
-  margin: 0 auto;
+  a {
+    @include primary-btn;
+  }
+  img {
+    width: 70%;
+    height: 70%;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (max-width: 450px) {

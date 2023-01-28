@@ -1,11 +1,9 @@
-import React, { useRef, useState } from "react";
-import useGetUsers from "../hooks/useGetUsers";
+import React, { useRef } from "react";
 import useModal from "../hooks/useModal";
 import useValidation from "../hooks/useValidation";
-import "../styles/PasswordRecovery.scss";
-
 import logo from "../assets/logos/logo_yard_sale.svg";
 import ModalConfirm from "../components/ModalConfirm";
+import "../styles/PasswordRecovery.scss";
 
 const PasswordRecovery = () => {
   const { modal, setModal } = useModal();

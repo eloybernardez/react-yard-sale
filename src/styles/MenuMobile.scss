@@ -1,74 +1,69 @@
-@use "vars";
-
 .MenuMobile {
   padding: 24px;
   background-color: white;
   position: absolute;
   z-index: 1;
   width: 95%;
+  height: 100vh;
   left: 0;
-  // top: 15px;
-}
 
-.MenuMobile figure {
-  margin: 0;
-  width: 90%;
-  display: flex;
-  justify-content: end;
-}
+  figure {
+    margin: 0;
+    width: 90%;
+    display: flex;
+    justify-content: end;
 
-.MenuMobile figure img {
-  width: 15px;
-  cursor: pointer;
-}
+    img {
+      width: 15px;
+      cursor: pointer;
+    }
+  }
 
-.MenuMobile button {
-  text-decoration: none;
-  color: var(--black);
-  font-weight: bold;
-}
+  button {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: bold;
 
-.MenuMobile button:focus {
-  color: var(--hospital-green);
-}
+    &:focus {
+      color: var(--hospital-green);
+    }
+  }
 
-.MenuMobile .title {
-  text-decoration: none;
-  font-size: var(--sm);
-  color: var(--black);
-  font-weight: bold;
-  margin-bottom: 24px;
-}
+  .title {
+    text-decoration: none;
+    font-size: var(--sm);
+    color: var(--black);
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
 
-.MenuMobile .sign-out {
-  color: var(--hospital-green);
-  font-weight: bold;
-  margin-bottom: 24px;
-  text-decoration: none;
-}
+  .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 
-.disabled {
-  pointer-events: none;
-  opacity: 0.5;
-}
+  ul {
+    padding: 0;
+    margin: 24px 0 0;
+    list-style: none;
+    border-bottom: 1px solid var(--very-light-pink);
 
-.MenuMobile ul {
-  padding: 0;
-  margin: 24px 0 0;
-  list-style: none;
-  border-bottom: 1px solid var(--very-light-pink);
-}
-.MenuMobile ul:nth-child(1) {
-  border-bottom: 1px solid var(--very-light-pink);
-}
-.MenuMobile ul li {
-  margin-bottom: 18px;
-}
-.MenuMobile ul li .email {
-  font-size: var(--sm);
-  font-weight: 300;
-}
-.MenuMobile ul li .sign-out {
-  font-size: var(--sm);
-  color: var(--hospital-green);
+    &:nth-child(1) {
+      border-bottom: 1px solid var(--very-light-pink);
+    }
+    li {
+      margin-bottom: 18px;
+      .email {
+        font-size: var(--sm);
+        font-weight: 300;
+      }
+      .sign-out {
+        font-size: var(--sm);
+        color: var(--hospital-green);
+        font-weight: bold;
+        margin-bottom: 24px;
+        text-decoration: none;
+      }
+    }
+  }
 }

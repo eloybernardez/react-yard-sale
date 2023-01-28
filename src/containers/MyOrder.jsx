@@ -39,7 +39,7 @@ const MyOrder = ({ handleMenus, handleOrders }) => {
         </div>
 
         <Link
-          className="primary-button button-checkout"
+          className="primary-button"
           onClick={() => {
             handleMenus();
           }}

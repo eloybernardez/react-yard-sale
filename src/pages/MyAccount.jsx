@@ -27,7 +27,7 @@ const MyAccount = () => {
                 </label>
                 <p className="value">*********</p>
               </div>
-              <Link to="/new-password" className="secondary-button edit-button">
+              <Link to="/new-password" className="secondary-button">
                 Edit Password
               </Link>
             </form>

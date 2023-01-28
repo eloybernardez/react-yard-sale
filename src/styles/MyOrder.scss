@@ -1,4 +1,5 @@
-@import "vars";
+@import "order";
+@import "buttons";
 
 .MyOrder {
   width: 360px;
@@ -17,13 +18,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  img {
+    transform: rotate(180deg);
+    margin-right: 14px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
 }
-.title-container img {
-  transform: rotate(180deg);
-  margin-right: 14px;
-  margin-bottom: 20px;
-  cursor: pointer;
-}
+
 .title {
   font-size: var(--lg);
   font-weight: bold;
@@ -35,51 +37,22 @@
 }
 
 .order {
-  display: grid;
+  @include order;
   grid-template-columns: auto 1fr;
-  gap: 16px;
-  align-items: center;
   background-color: var(--text-input-field);
   margin-bottom: 24px;
   border-radius: 8px;
   padding: 0 24px;
-}
-.order p:nth-child(1) {
-  display: flex;
-  flex-direction: column;
-}
-.order p span:nth-child(1) {
-  font-size: var(--md);
-  font-weight: bold;
-}
-.order p:nth-child(2).order-price {
-  text-align: end;
-  font-weight: bold;
-}
 
-.button-checkout {
-  text-decoration: none;
-  color: var(--white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  p:nth-child(2).order-price {
+    text-align: end;
+    font-weight: bold;
+  }
 }
 
 .primary-button {
-  background-color: var(--hospital-green);
-  border-radius: 8px;
-  border: none;
-  color: var(--white);
-  width: 100%;
-  cursor: pointer;
-  font-size: var(--md);
-  font-weight: bold;
-  height: 50px;
-  transition: all 0.6s;
-}
-
-.primary-button--hover {
-  color: var(--hospital-green);
+  @include primary-btn(var(--hospital-green), var(--white));
+  width: 90%;
 }
 
 @media (max-width: 640px) {

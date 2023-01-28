@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import useModal from "../hooks/useModal";
 import ModalConfirm from "../components/ModalConfirm";
 import useValidation from "../hooks/useValidation";
+import logo from "../assets/logos/logo_yard_sale.svg";
 import "../styles/CreateAccount.scss";
 
 const CreateAccount = () => {
@@ -11,7 +12,7 @@ const CreateAccount = () => {
 
   return (
     <div className="CreateAccount">
-      <div className="CreateAccount-container">
+      <div className="CreateAccount__container">
         {modal ? (
           <ModalConfirm
             title="New user created"
@@ -19,6 +20,7 @@ const CreateAccount = () => {
             setModal={async () => await handleModal(false)}
           />
         ) : null}
+        <img src={logo} alt="logo" className="logo" />
         <h1 className="title">New Account</h1>
         <form action="/" className="form" ref={form}>
           <div>
@@ -30,7 +32,7 @@ const CreateAccount = () => {
               name="name"
               id="name"
               placeholder="Jane"
-              className="input input-name"
+              className="input input--name"
               required
             />
             <label
@@ -45,7 +47,7 @@ const CreateAccount = () => {
               id="email"
               placeholder="janedoe@example.com"
               className={
-                error ? "input input-email input--error" : "input input-email"
+                error ? "input input--email input--error" : "input input--email"
               }
               onKeyDown={() => setError(false)}
               required
@@ -58,15 +60,15 @@ const CreateAccount = () => {
               name="pass"
               id="pass"
               placeholder="*********"
-              className="input input-password"
+              className="input input--password"
               required
             />
           </div>
           <button
             type="button"
-            className="primary-button signup-button"
-            onClick={() => {
-              handleNewUser(form);
+            className="signup-button"
+            onClick={async () => {
+              await handleNewUser(form);
               setModal(true);
             }}
           >

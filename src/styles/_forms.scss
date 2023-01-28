@@ -1,0 +1,87 @@
+@mixin forms {
+  .logo {
+    width: 150px;
+    margin-bottom: 48px;
+    justify-self: center;
+  }
+  .title {
+    font-size: var(--lg);
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .subtitle {
+    color: var(--very-light-pink);
+    font-size: var(--md);
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      color: var(--hospital-green);
+      font-size: var(--sm);
+      text-decoration: none;
+      margin-top: 12px;
+      margin-bottom: 24px;
+      text-align: center;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+    .value {
+      color: var(--very-light-pink);
+      font-size: var(--md);
+      margin: 8px 0 32px 0;
+    }
+
+    .input {
+      background-color: var(--text-input-field);
+      border: none;
+      border-radius: 8px;
+      height: 30px;
+      font-size: var(--md);
+      padding: 6px;
+      margin-bottom: 12px;
+      &--error {
+        outline: 1px solid var(--red);
+      }
+      &--name,
+      &--email,
+      &--password {
+        margin-bottom: 22px;
+      }
+      &:hover {
+        outline: 2px solid var(--hospital-green);
+      }
+    }
+  }
+
+  .label {
+    font-size: var(--sm);
+    font-weight: bold;
+    margin-bottom: 4px;
+    &--error {
+      color: var(--red);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .form {
+      height: 100%;
+      justify-content: space-between;
+
+      &-container {
+        height: 100%;
+      }
+    }
+  }
+}

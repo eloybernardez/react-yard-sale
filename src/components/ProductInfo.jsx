@@ -10,19 +10,19 @@ const ProductInfo = ({ product, handleClose, handleCart }) => {
   return ReactDOM.createPortal(
     <div className="Modal">
       <div className="ProductInfo">
-        <div className="ProductInfo-header">
+        <div className="ProductInfo__header">
           <p>{product.title}</p>
           <figure>
             <img src={close} alt="close" onClick={handleClose} />
           </figure>
         </div>
-        <figure className="ProductInfo-img">
+        <figure className="ProductInfo__img">
           <img src={product.images[0]} alt={product.title} />
         </figure>
 
         <p>{product.description}</p>
 
-        <div className="ProductInfo-footer">
+        <div className="ProductInfo__footer">
           <button
             className={`add-to-cart-button ${
               product.cart ? `secondary-button--cart` : `primary-button--cart`

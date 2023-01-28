@@ -15,7 +15,7 @@ const ModalConfirm = ({ setModal, title, message }) => {
         <p className="modal__message">{message}</p>
         <button
           type="button"
-          className="primary-button primary-button--modal"
+          className="primary-button--modal"
           onClick={() => setModal(false)}
         >
           Close

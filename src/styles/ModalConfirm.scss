@@ -50,6 +50,9 @@
 
 .primary-button--modal {
   @include primary-btn;
+  &:hover {
+    background-color: var(--hospital-green);
+  }
 }
 
 @media screen and (max-width: 768px) {
